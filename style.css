@@ -1,0 +1,5959 @@
+/* style.css */
+:root {
+    --table-bg-color: #ffffff;
+    --header-bg-color: #2c3e50;
+    --header-text-color: #ffffff;
+    --border-color: #bbb;
+    --font-size: 14px;
+    --font-family: 'Noto Sans KR', sans-serif;
+    --row-height: 50px;
+    --cell-padding: 12px;
+    --border-width: 1px;
+    --hover-effect: background;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    overflow-x: auto;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* 헤더 섹션 */
+.header-section {
+    margin-bottom: 30px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: left;
+    flex-wrap: wrap;
+    gap: 20px;
+    position: relative;
+}
+
+.header-section h1 {
+    margin-bottom: 0;
+    text-align: center;
+    flex: 1;
+    min-width: 300px;
+    position: static;
+}
+
+.version-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+.version-info-line {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #f8f9fa;
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+    font-size: 6px;
+}
+
+.version-buttons-line {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+
+
+.version-nav-buttons {
+    display: flex;
+    gap: 2px;
+}
+
+.version-nav-btn {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 0px 1px;
+    border-radius: 1px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 4px;
+    min-width: 6px;
+    height: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    font-weight: bold;
+}
+
+.version-nav-btn:hover {
+    background: #5a6268;
+    transform: translateY(-1px);
+}
+
+.version-nav-btn:disabled {
+    background: #adb5bd;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.version-nav-btn-small {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 1px 3px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 8px;
+    min-width: 16px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    font-weight: bold;
+}
+
+.version-nav-btn-small:hover {
+    background: #5a6268;
+    transform: translateY(-1px);
+}
+
+.version-nav-btn-small:disabled {
+    background: #adb5bd;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.version-info {
+    font-size: 12px;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.current-version-display {
+    font-size: 14px;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+/* 버전 관리 모달 스타일 */
+.version-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    padding-left: 25px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background: white;
+    transition: all 0.2s ease;
+    position: relative;
+    cursor: move;
+}
+
+.version-item:hover {
+    border-color: #4a90e2;
+    box-shadow: 0 2px 8px rgba(74, 144, 226, 0.1);
+}
+
+.version-item[draggable="true"]:active {
+    cursor: grabbing;
+}
+
+.version-item.dragging {
+    opacity: 0.4;
+    transform: scale(0.98);
+}
+
+.version-drag-handle {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    cursor: grab;
+}
+
+.version-drag-handle:active {
+    cursor: grabbing;
+}
+
+.version-item-info {
+    flex: 1;
+}
+
+.version-item-name {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.version-item-description {
+    font-size: 13px;
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+
+.version-item-date {
+    font-size: 12px;
+    color: #adb5bd;
+}
+
+.version-item-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.version-item-actions .btn-sm {
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+/* 수정모드 토글 버튼 */
+.edit-mode-toggle {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.btn-edit-mode {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    outline: none;
+}
+
+.btn-edit-mode:hover {
+    background: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    border: none;
+    outline: none;
+}
+
+.btn-edit-mode.active {
+    background: #dc3545;
+    border: none;
+    outline: none;
+}
+
+.btn-edit-mode.active:hover {
+    background: #c82333;
+    border: none;
+    outline: none;
+}
+
+/* 디자인 설정 패널 */
+.design-panel {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.design-panel h3 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+    font-size: 1.5rem;
+}
+
+.design-controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.design-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.design-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #6c757d;
+}
+
+.design-group input[type="color"] {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.design-group input[type="range"] {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: #dee2e6;
+    outline: none;
+    cursor: pointer;
+}
+
+.design-group input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #4a90e2;
+    cursor: pointer;
+}
+
+.design-group select {
+    padding: 8px 12px;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    font-size: 14px;
+    background: white;
+    cursor: pointer;
+}
+
+.design-group span {
+    font-size: 12px;
+    color: #6c757d;
+    text-align: center;
+}
+
+.design-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.design-actions .btn {
+    min-width: 120px;
+}
+
+/* 수정모드 활성화 시 테이블 스타일 */
+.edit-mode-active table {
+    border: 2px dashed #4a90e2;
+}
+
+.edit-mode-active th,
+.edit-mode-active td {
+    position: relative;
+}
+
+.edit-mode-active th:hover,
+.edit-mode-active td:hover {
+    background: rgba(74, 144, 226, 0.1);
+    cursor: pointer;
+}
+
+.edit-mode-active th::after,
+.edit-mode-active td::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid transparent;
+    pointer-events: none;
+}
+
+.edit-mode-active th:hover::after,
+.edit-mode-active td:hover::after {
+    border-color: #4a90e2;
+}
+
+/* 편집 가능한 셀 스타일 */
+.editable-cell {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.editable-cell:hover {
+    background: rgba(74, 144, 226, 0.15) !important;
+    box-shadow: inset 0 0 0 2px #4a90e2;
+}
+
+/* 매트릭스 셀 편집 스타일 */
+#matrixTable .editable-cell {
+    position: relative;
+}
+
+#matrixTable .editable-cell:hover {
+    background: rgba(255, 193, 7, 0.2) !important;
+    box-shadow: inset 0 0 0 2px #ffc107;
+}
+
+#matrixTable .editable-cell:active {
+    background: rgba(255, 193, 7, 0.3) !important;
+    transform: scale(0.98);
+}
+
+/* 편집 중인 셀 스타일 */
+.editing-cell {
+    background: #fff3cd !important;
+    box-shadow: inset 0 0 0 2px #ffc107;
+    position: relative !important;
+    padding: 0 !important;
+}
+
+.cell-edit-input,
+.cell-edit-textarea {
+    position: absolute !important;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100% !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    font-size: inherit !important;
+    font-family: inherit !important;
+    resize: none !important;
+    outline: none !important;
+    z-index: 2;
+}
+
+.cell-edit-input:focus {
+    outline: none;
+    background: #fff;
+    border: 1px solid #4a90e2;
+}
+
+/* 공통가치대응 셀 편집 textarea 스타일 */
+
+
+/* 편집 불가능한 셀 */
+.no-edit {
+    cursor: default !important;
+}
+
+.no-edit:hover {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* 이수모형표 편집 가능한 셀 스타일 */
+.curriculum-table .editable-cell {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.curriculum-table .editable-cell:hover {
+    background: rgba(74, 144, 226, 0.1) !important;
+    border: 1px dashed #4a90e2 !important;
+}
+
+.curriculum-table .editable-cell:active {
+    background: rgba(74, 144, 226, 0.2) !important;
+}
+
+/* 수행평가 기준 셀 */
+.performance-criteria {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: help;
+    font-size: 12px;
+    color: #666;
+}
+
+.performance-criteria:hover {
+    background: #f8f9fa;
+    color: #333;
+}
+
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    flex-wrap: wrap;
+}
+
+.tab {
+    padding: 12px 24px;
+    background: #e9ecef;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    flex: 1;
+    min-width: 120px;
+}
+
+.tab:hover {
+    background: #dee2e6;
+}
+
+.tab.active {
+    background: #4a90e2;
+    color: white;
+}
+
+.content {
+    display: none;
+    animation: fadeIn 0.3s ease;
+    position: relative;
+}
+
+.content.active {
+    display: block;
+}
+
+#courses {
+    overflow: visible !important;
+    position: relative;
+    min-height: 300px;
+    z-index: 1;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.filters {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: stretch;
+    position: relative;
+    overflow: visible;
+    z-index: 100;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    min-width: 140px;
+    position: relative;
+}
+
+.filter-group > label:first-child {
+    font-size: 13px;
+    font-weight: 600;
+    color: #495057;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    height: 20px;
+    line-height: 20px;
+    margin: 0;
+    margin-bottom: 4px;
+    margin-left: 8px;
+    display: flex;
+    align-items: flex-end;
+}
+
+select, input {
+    padding: 6px 12px;
+    border: 1.5px solid #e1e7ed;
+    border-radius: 8px;
+    font-size: 13px;
+    background: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+
+select:hover, input:hover {
+    border-color: #adb5bd;
+}
+
+select:focus, input:focus {
+    outline: none;
+    border-color: #2196f3;
+    box-shadow: 0 0 0 3px rgba(33,150,243,0.1);
+    transform: translateY(-1px);
+}
+
+input[type="text"]::placeholder {
+    color: #adb5bd;
+    font-weight: 400;
+}
+
+.table-container {
+    background: var(--table-bg-color);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: visible !important;
+    position: relative;
+    min-height: 300px;
+    padding-bottom: 150px;
+    margin-bottom: -150px;
+}
+
+table, .matrix-table, #coursesTable {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+    background: var(--table-bg-color);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    table-layout: auto !important;
+}
+
+th, td {
+    padding: var(--cell-padding);
+    border-bottom: var(--border-width) solid var(--border-color);
+    font-size: var(--font-size);
+    height: var(--row-height);
+    border-right: var(--border-width) solid var(--border-color);
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    white-space: normal;
+    word-break: break-word;
+}
+
+tr:hover {
+    background: #f8f9fa;
+}
+
+tr:hover.hover-shadow {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+tr:hover.hover-border {
+    border: 2px solid #4a90e2;
+}
+
+tr:hover.hover-none {
+    background: transparent;
+}
+
+/* 매트릭스 테이블 헤더 스타일 - 모든 색상 제거 */
+.matrix-table th {
+    /* background: #f7f7f7 !important; */
+    /* color: #000000 !important; */
+    /* border: 1px solid #bbb !important; */
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    height: 120px;
+    padding: 8px 3px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: var(--font-family);
+    white-space: normal;
+    /* border: 1px solid #bbb !important; */
+    overflow: visible;
+    text-overflow: clip;
+    position: relative;
+    min-width: 8px;
+    width: calc((100% - 370px) / 18);
+    vertical-align: top;
+    word-break: keep-all;
+    word-wrap: break-word;
+    line-height: 1.2;
+    /* border-color: #bbb !important; */
+}
+
+
+
+
+.matrix-table th:nth-child(2) {
+    width: 60px !important;
+    min-width: 60px !important;
+    max-width: 120px !important;
+}
+
+.matrix-table th:nth-child(3) {
+    width: 80px;
+    min-width: 80px;       
+}
+
+.matrix-table th:nth-child(4) {
+    width: 150px;
+    min-width: 600px;
+}
+
+.matrix-table th:nth-child(5) {
+    width: 100px;
+    min-width: 100px;
+    text-align: center;
+}
+
+/* 카테고리별 헤더 스타일 */
+.matrix-table th.category-header {
+    background: #1a252f;
+    color: white;
+    font-weight: bold;
+    font-family: var(--font-family);
+    font-size: 14px;
+    text-align: center;
+    writing-mode: horizontal-tb;
+    height: auto;
+    padding: 10px 12px;
+}
+
+.matrix-table td {
+    text-align: center;
+    padding: 4px;
+    height: 30px;
+    border: 1px solid #dee2e6;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-break: keep-all;
+    word-wrap: break-word;
+    min-width: 12px;
+    width: calc((100% - 370px) / 18);
+    vertical-align: middle;
+}
+
+.matrix-table td:first-child,
+.matrix-table td:nth-child(2),
+.matrix-table td:nth-child(3),
+.matrix-table td:nth-child(4) {
+    text-align: center;
+    width: auto;
+    min-width: 220px;
+}
+
+.matrix-table td:nth-child(4) {
+    text-align: center;
+    padding-left: 8px;
+    font-weight: 400;
+    min-width: 60px;
+}
+
+.matrix-table td:nth-child(5) {
+    text-align: center;
+    font-weight: 400;
+    min-width: 50px;
+}
+
+.matrix-table td:first-child {
+    background: #f8f9fa;
+    font-weight: bold;
+}
+
+/* 구분 카테고리별 색상 구분 */
+.matrix-table tr.category-thinking td:first-child {
+    background: transparent;
+    color: #1976d2;
+}
+
+.matrix-table tr.category-design td:first-child {
+    background: transparent;
+    color: #d32f2f;
+}
+
+.matrix-table tr.category-tech td:first-child {
+    background: transparent;
+    color: #f57c00;
+}
+
+.matrix-table tr.category-practice td:first-child {
+    background: transparent;
+    color: #388e3c;
+}
+
+.matrix-table tr:nth-child(even).category-thinking td:first-child {
+    background: transparent;
+}
+
+.matrix-table tr:nth-child(even).category-design td:first-child {
+    background: transparent;
+}
+
+.matrix-table tr:nth-child(even).category-tech td:first-child {
+    background: transparent;
+}
+
+.matrix-table tr:nth-child(even).category-practice td:first-child {
+    background: transparent;
+}
+
+/* 카테고리 셀이 없는 행들의 스타일 - 더 이상 필요하지 않음 */
+
+
+
+/* 상위 헤더(수행평가기준, 교과과정 등)도 동일하게 */
+.matrix-table thead tr:nth-child(1) th {
+    /* background: transparent !important; */
+    /* color: #333 !important; */
+    /* border-color: #bbb !important; */
+    /* font-weight: normal !important; */
+    /* text-align: center; */
+    /* vertical-align: middle; */
+    /* font-size: 15px; */
+    font-family: var(--font-family);
+}
+
+.matrix-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: inline-block;
+}
+
+.matrix-mark {
+    font-size: inherit;
+    font-weight: bold;
+    display: inline-flex;
+    width: 1.2em;
+    height: 1.2em;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    border-radius: 50%;
+    color: #333;
+    vertical-align: middle;
+}
+
+.matrix-mark-thinking,
+.matrix-mark-design,
+.matrix-mark-tech,
+.matrix-mark-practice {
+    color: #333;
+}
+
+.column-resizer {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 6px;
+    height: 100%;
+    cursor: col-resize;
+    z-index: 10;
+    background: transparent;
+    transition: background 0.2s;
+}
+
+.column-resizer.active,
+th.resizable:hover .column-resizer {
+    background: #b3c6ff;
+}
+
+.resizing {
+    cursor: col-resize !important;
+    user-select: none !important;
+}
+
+.resizing * {
+    cursor: col-resize !important;
+    user-select: none !important;
+}
+
+.dot-full {
+    background: #27ae60;
+}
+
+.dot-partial {
+    background: #f39c12;
+    position: relative;
+}
+
+.dot-partial::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #1976d2;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background: white;
+    width: 90%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 10px;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-header h2 {
+    color: #2c3e50;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #6c757d;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #495057;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+}
+
+.btn, .btn-secondary, .btn-primary, .btn-danger {
+    min-width: 70px;
+    padding: 1px 14px;
+    font-size: 14px;
+    height: 32px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+}
+
+.btn-sm {
+    min-width: 48px;
+    padding: 4px 10px;
+    font-size: 13px;
+    height: 28px;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background: #4a90e2;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #357abd;
+    border: none;
+    outline: none;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #545b62;
+    border: none;
+    outline: none;
+}
+
+.btn-add {
+    background: #27ae60;
+    color: white;
+    margin-bottom: 20px;
+    border: none;
+    outline: none;
+}
+
+.btn-add:hover {
+    background: #229954;
+    border: none;
+    outline: none;
+}
+
+.btn-danger {
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0px 0px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    outline: none;
+}
+
+.btn-danger:hover {
+    background: #c0392b;
+    border: none;
+    outline: none;
+}
+
+.matrix-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    justify-content: flex-end;
+}
+
+.matrix-controls .btn {
+    padding: 0px 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.font-size-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #00000000;
+    padding: 3px 3px;
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+}
+
+.font-size-controls .btn-sm {
+    padding: 1px 1px;
+    font-size: 10px;
+    min-width: 30px;
+}
+
+.font-size-display {
+    font-size: 12px; 
+    font-weight: 500;
+    color: #6b6b6b;
+    min-width: 40px;
+    text-align: center;
+}
+
+.fullscreen-active {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 9999 !important;
+    background: white !important;
+    overflow: auto !important;
+}
+
+.fullscreen-active .matrix-controls {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background: white;
+    border-bottom: 1px solid #dee2e6;
+}
+
+/* 구분(카테고리) 배지 */
+.category-badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    margin-right: 2px;
+    vertical-align: middle;
+}
+.badge-category-liberal { background: #6c757d; }
+.badge-category-thinking { background: #1976d2; }
+.badge-category-design { background: #d32f2f; }
+.badge-category-tech { background: #28a745; }
+.badge-category-practice { background: #388e3c; }
+.badge-category-etc { background: #7b1fa2; }
+
+/* 과목분류 배지 */
+.subject-type-badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #fff;
+    margin-left: 2px;
+    vertical-align: middle;
+    opacity: 0.95;
+}
+.badge-type-design { background: #e57373; }
+.badge-type-digital { background: #7e57c2; }
+.badge-type-history { background: #ffb300; }
+.badge-type-theory { background: #009688; }
+.badge-type-urban { background: #ec407a; }
+.badge-type-social { background: #5c6bc0; }
+.badge-type-tech { background: #28a745; }
+.badge-type-practice { background: #43a047; }
+.badge-type-extracurricular { background: #8bc34a; }
+.badge-type-unclassified { background: #848484; }
+
+/* 반응형 디자인 */
+/* 모바일 반응형 스타일 */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+        overflow-x: hidden;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    /* 헤더 섹션 모바일 최적화 */
+    .main-header-content {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .main-header-content h1 {
+        position: static;
+        transform: none;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+
+    .main-header-content img {
+        height: 20px;
+    }
+
+    .version-controls {
+        align-items: center;
+        width: 100%;
+    }
+
+    .version-info-line {
+        font-size: 10px;
+        padding: 6px 10px;
+    }
+
+    .version-buttons-line {
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .version-buttons-line .btn-sm {
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+
+    /* 탭 모바일 최적화 */
+    .tabs {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .tab {
+        min-width: auto;
+        padding: 8px 12px;
+        font-size: 12px;
+        border-radius: 6px;
+    }
+
+    /* 필터 모바일 최적화 */
+    .filters {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .filter-group {
+        min-width: auto;
+        width: 100%;
+    }
+
+    .filter-group > label:first-child {
+        font-size: 12px;
+        margin-bottom: 4px;
+        height: 18px;
+        line-height: 18px;
+    }
+
+    .filter-group select,
+    .filter-group input {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+
+    /* 표 모바일 최적화 */
+    .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    table, .matrix-table, #coursesTable {
+        font-size: 12px;
+        min-width: 600px;
+    }
+
+    th, td {
+        padding: 6px 8px;
+        font-size: 11px;
+        white-space: nowrap;
+    }
+
+    /* 교과목 블록 모바일 최적화 */
+    .course-block {
+        font-size: 10px;
+        padding: 4px 6px;
+        margin: 2px;
+        border-radius: 4px;
+        min-height: 30px;
+    }
+
+    .course-block-title {
+        font-size: 10px;
+        font-weight: 600;
+        line-height: 1.2;
+        margin-bottom: 2px;
+    }
+
+    .course-credits-text {
+        font-size: 9px;
+    }
+
+    .course-block-info {
+        font-size: 9px;
+        line-height: 1.1;
+    }
+
+    .course-description {
+        font-size: 8px;
+        line-height: 1.1;
+    }
+
+    /* 매트릭스 테이블 모바일 최적화 */
+    .matrix-table th {
+        font-size: 10px;
+        padding: 4px 6px;
+        white-space: nowrap;
+    }
+
+    .matrix-table td {
+        font-size: 9px;
+        padding: 3px 4px;
+    }
+
+    .matrix-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+    }
+
+    .matrix-mark {
+        font-size: 8px;
+        padding: 1px 3px;
+    }
+
+    /* 통계 카드 모바일 최적화 */
+    .stats {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+    }
+
+    .stat-card {
+        padding: 15px;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+    }
+
+    .stat-label {
+        font-size: 12px;
+    }
+
+    /* 모달 모바일 최적화 */
+    .modal-content {
+        width: 95%;
+        margin: 10px auto;
+        padding: 15px;
+        max-height: 90vh;
+    }
+
+    .modal-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .form-group label {
+        font-size: 12px;
+    }
+
+    .form-group input,
+    .form-group select {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+
+    /* 버튼 모바일 최적화 */
+    .btn {
+        padding: 8px 12px;
+        font-size: 12px;
+        border-radius: 6px;
+    }
+
+    .btn-sm {
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+
+    /* 매트릭스 필터 모바일 최적화 */
+    .matrix-filters {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .filter-section {
+        width: 100%;
+    }
+
+    .checkbox-group {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .modern-checkbox {
+        font-size: 12px;
+        padding: 6px 8px;
+    }
+
+    .label-text {
+        font-size: 11px;
+    }
+
+    /* 교과과정 테이블 모바일 최적화 */
+    .curriculum-table {
+        font-size: 10px;
+    }
+
+    .curriculum-table th,
+    .curriculum-table td {
+        padding: 4px 6px;
+        font-size: 9px;
+    }
+
+    .curriculum-table th:nth-child(-n+3) {
+        font-size: 10px;
+        font-weight: bold;
+    }
+
+    /* 공통가치 테이블 모바일 최적화 */
+    .common-values-table {
+        font-size: 10px;
+    }
+
+    .common-values-table th,
+    .common-values-table td {
+        padding: 4px 6px;
+        font-size: 9px;
+    }
+
+    /* 디자인 패널 모바일 최적화 */
+    .design-panel {
+        padding: 15px;
+    }
+
+    .design-panel h3 {
+        font-size: 1.1rem;
+    }
+
+    .design-controls {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .design-group label {
+        font-size: 12px;
+    }
+
+    .design-group input[type="range"] {
+        width: 100%;
+    }
+
+    .design-group select {
+        font-size: 12px;
+        padding: 6px 8px;
+    }
+}
+
+/* 작은 모바일 화면 최적화 */
+@media (max-width: 480px) {
+    .container {
+        padding: 5px;
+        overflow-x: hidden;
+    }
+    
+    h1 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    /* 헤더 더 작은 화면 최적화 */
+    .main-header-content h1 {
+        font-size: 1.1rem;
+    }
+
+    .main-header-content img {
+        height: 18px;
+    }
+
+    .version-info-line {
+        font-size: 9px;
+        padding: 4px 8px;
+    }
+
+    .version-buttons-line .btn-sm {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+
+    /* 탭 더 작은 화면 최적화 */
+    .tab {
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+
+    /* 필터 더 작은 화면 최적화 */
+    .filter-group > label:first-child {
+        font-size: 11px;
+        height: 16px;
+        line-height: 16px;
+    }
+
+    .filter-group select,
+    .filter-group input {
+        font-size: 13px;
+        padding: 6px 8px;
+    }
+
+    /* 표 더 작은 화면 최적화 */
+    table, .matrix-table, #coursesTable {
+        font-size: 10px;
+        min-width: 500px;
+    }
+
+    th, td {
+        padding: 4px 6px;
+        font-size: 9px;
+    }
+
+    /* 교과목 블록 더 작은 화면 최적화 */
+    .course-block {
+        font-size: 9px;
+        padding: 3px 5px;
+        margin: 1px;
+        min-height: 25px;
+    }
+
+    .course-block-title {
+        font-size: 9px;
+        margin-bottom: 1px;
+    }
+
+    .course-credits-text {
+        font-size: 8px;
+    }
+
+    .course-block-info {
+        font-size: 8px;
+    }
+
+    .course-description {
+        font-size: 7px;
+    }
+
+    /* 매트릭스 테이블 더 작은 화면 최적화 */
+    .matrix-table {
+        font-size: 10px;
+    }
+    
+    .matrix-table th {
+        font-size: 9px;
+        padding: 3px 4px;
+    }
+    
+    .matrix-table td {
+        font-size: 8px;
+        padding: 2px 3px;
+    }
+
+    .matrix-dot {
+        width: 6px;
+        height: 6px;
+    }
+
+    .matrix-mark {
+        font-size: 7px;
+        padding: 1px 2px;
+    }
+
+    /* 교과과정 테이블 더 작은 화면 최적화 */
+    .curriculum-table {
+        font-size: 9px;
+    }
+
+    .curriculum-table th,
+    .curriculum-table td {
+        padding: 3px 4px;
+        font-size: 8px;
+    }
+
+    .curriculum-table th:nth-child(-n+3) {
+        font-size: 9px;
+    }
+
+    /* 공통가치 테이블 더 작은 화면 최적화 */
+    .common-values-table {
+        font-size: 9px;
+    }
+
+    .common-values-table th,
+    .common-values-table td {
+        padding: 3px 4px;
+        font-size: 8px;
+    }
+
+    /* 버튼 더 작은 화면 최적화 */
+    .btn {
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+
+    .btn-sm {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+
+    /* 모달 더 작은 화면 최적화 */
+    .modal-content {
+        width: 98%;
+        margin: 5px auto;
+        padding: 10px;
+    }
+
+    .modal-header h2 {
+        font-size: 1.1rem;
+    }
+
+    .form-group label {
+        font-size: 11px;
+    }
+
+    .form-group input,
+    .form-group select {
+        font-size: 13px;
+        padding: 6px 8px;
+    }
+
+    /* 통계 카드 더 작은 화면 최적화 */
+    .stat-card {
+        padding: 10px;
+    }
+
+    .stat-number {
+        font-size: 1.3rem;
+    }
+
+    .stat-label {
+        font-size: 11px;
+    }
+}
+
+.matrix-table th.resizable {
+    position: relative;
+}
+
+/* 모든 th, td 가운데 정렬 및 중간 정렬 */
+.matrix-table th, .matrix-table td {
+    text-align: center !important;
+    vertical-align: middle !important;
+    writing-mode: horizontal-tb !important;
+    text-orientation: initial !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    word-break: keep-all !important;
+    word-wrap: break-word !important;
+    min-width: unset !important;
+    min-height: unset !important;
+    width: auto !important;
+    height: auto !important;
+    padding: 2px 4px !important;
+    box-sizing: border-box;
+    border: 1px solid #bbb !important;
+}
+
+/* 수행평가 항목 이름(헤더 4번째 행)도 가로쓰기, 가운데 정렬 */
+.matrix-table thead tr:nth-child(4) th.resizable {
+    writing-mode: horizontal-tb !important;
+    text-orientation: initial !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    vertical-align: middle !important;
+    word-break: keep-all !important;
+    word-wrap: break-word !important;
+    line-height: 1.2;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* 수행평가 항목 번호(3번째 행)는 가로쓰기 */
+.matrix-table thead tr:nth-child(3) th.resizable {
+    writing-mode: horizontal-tb !important;
+    text-orientation: initial !important;
+    white-space: nowrap !important;
+    vertical-align: middle !important;
+    font-size: 14px;
+    padding: 2px 4px;
+    height: auto;
+    min-height: 0;
+    width: auto;
+    min-width: 0;
+}
+
+/* 수행평가 항목 이름(4번째 행)는 세로쓰기 */
+.matrix-table thead tr:nth-child(4) th.resizable {
+    writing-mode: vertical-rl !important;
+    text-orientation: mixed !important;
+    white-space: normal !important;
+    vertical-align: middle !important;
+    word-break: keep-all !important;
+    word-wrap: break-word !important;
+    font-size: 14px;
+    padding: 2px 4px;
+    height: auto;
+    min-height: 0;
+    width: auto;
+    min-width: 0;
+}
+
+/* 모든 th, td의 높이/폭 최소화 */
+.matrix-table th, .matrix-table td {
+    height: auto !important;
+    min-height: 0 !important;
+    width: auto !important;
+    min-width: 0 !important;
+    padding: 2px 4px !important;
+    box-sizing: border-box;
+}
+
+.matrix-table thead th {
+    text-align: center !important;
+    vertical-align: middle !important;
+    white-space: nowrap;
+    font-family: var(--font-family);
+}
+
+.matrix-table thead tr:nth-child(2) th {
+    vertical-align: middle !important;
+}
+
+.matrix-table tr.major-required-row td {
+    background: #f0f0f0;
+}
+.matrix-table tr.major-required-row td:first-child {
+    background: #fff !important;
+}
+.matrix-table td.major-required-dot {
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 1;
+    padding: 0 !important;
+    height: 100%;
+}
+
+.matrix-table td:nth-child(4):hover {
+    background-color: #f0f8ff !important;
+    color: #0066cc;
+}
+
+.matrix-table td:nth-child(4) {
+    transition: all 0.2s ease;
+}
+
+.matrix-table td:nth-child(5):hover {
+    background-color: #f0f8ff !important;
+    color: #0066cc;
+}
+
+.matrix-table td:nth-child(5) {
+    transition: all 0.2s ease;
+}
+
+.matrix-table th:nth-child(n+6):nth-last-child(n+2),
+.matrix-table td:nth-child(n+6):nth-last-child(n+2) {
+    width: 5.56% !important;
+    min-width: 60px;
+    max-width: 1fr;
+    text-align: center;
+}
+
+/* 건축적사고 (1~4번) */
+.matrix-table thead tr:nth-child(2) th:nth-child(6),
+.matrix-table thead tr:nth-child(3) th:nth-child(1),
+.matrix-table thead tr:nth-child(3) th:nth-child(2),
+.matrix-table thead tr:nth-child(3) th:nth-child(3),
+.matrix-table thead tr:nth-child(3) th:nth-child(4),
+.matrix-table thead tr:nth-child(4) th:nth-child(1),
+.matrix-table thead tr:nth-child(4) th:nth-child(2),
+.matrix-table thead tr:nth-child(4) th:nth-child(3),
+.matrix-table thead tr:nth-child(4) th:nth-child(4) {
+    background: #e3f2fd !important;
+    color: #333 !important; 
+    font-weight: 400 !important;
+    font-family: var(--font-family);
+    font-size: 14px;
+}
+
+/* 설계 (5~11번) */
+.matrix-table thead tr:nth-child(2) th:nth-child(7),
+.matrix-table thead tr:nth-child(3) th:nth-child(5),
+.matrix-table thead tr:nth-child(3) th:nth-child(6),
+.matrix-table thead tr:nth-child(3) th:nth-child(7),
+.matrix-table thead tr:nth-child(3) th:nth-child(8),
+.matrix-table thead tr:nth-child(3) th:nth-child(9),
+.matrix-table thead tr:nth-child(3) th:nth-child(10),
+.matrix-table thead tr:nth-child(3) th:nth-child(11),
+.matrix-table thead tr:nth-child(4) th:nth-child(5),
+.matrix-table thead tr:nth-child(4) th:nth-child(6),
+.matrix-table thead tr:nth-child(4) th:nth-child(7),
+.matrix-table thead tr:nth-child(4) th:nth-child(8),
+.matrix-table thead tr:nth-child(4) th:nth-child(9),
+.matrix-table thead tr:nth-child(4) th:nth-child(10),
+.matrix-table thead tr:nth-child(4) th:nth-child(11) {
+    background: #ffebee !important;
+    color: #333 !important;
+    font-weight: 400 !important;
+    font-family: var(--font-family);
+    font-size: 14px;
+}
+
+/* 기술 (12~16번) */
+.matrix-table thead tr:nth-child(2) th:nth-child(8),
+.matrix-table thead tr:nth-child(3) th:nth-child(12),
+.matrix-table thead tr:nth-child(3) th:nth-child(13),
+.matrix-table thead tr:nth-child(3) th:nth-child(14),
+.matrix-table thead tr:nth-child(3) th:nth-child(15),
+.matrix-table thead tr:nth-child(3) th:nth-child(16),
+.matrix-table thead tr:nth-child(4) th:nth-child(12),
+.matrix-table thead tr:nth-child(4) th:nth-child(13),
+.matrix-table thead tr:nth-child(4) th:nth-child(14),
+.matrix-table thead tr:nth-child(4) th:nth-child(15),
+.matrix-table thead tr:nth-child(4) th:nth-child(16) {
+    background: #fff3e0 !important;
+    color: #333 !important;
+    font-weight: 400 !important;
+    font-family: var(--font-family);
+    font-size: 14px;
+}
+
+/* 실무 (17~18번) */
+.matrix-table thead tr:nth-child(2) th:nth-child(9),
+.matrix-table thead tr:nth-child(3) th:nth-child(17),
+.matrix-table thead tr:nth-child(3) th:nth-child(18),
+.matrix-table thead tr:nth-child(4) th:nth-child(17),
+.matrix-table thead tr:nth-child(4) th:nth-child(18) {
+    background: #e8f5e8 !important;
+    color: #333 !important;
+    font-weight: 400 !important;
+    font-family: var(--font-family);
+    font-size: 14px;
+}
+
+.matrix-table thead tr:first-child th,
+.matrix-table thead tr:nth-child(2) th {
+
+    border-top: 1px solid #bbb !important;
+}
+
+/* 정렬 기능 스타일 */
+th.sortable {
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+
+th.sortable:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.sort-icon {
+    font-size: 12px;
+    margin-left: 5px;
+    opacity: 0.5;
+}
+
+th.sortable.asc .sort-icon::after {
+    content: "▲";
+    opacity: 1;
+    color: #007bff;
+    font-weight: bold;
+}
+
+th.sortable.desc .sort-icon::after {
+    content: "▼";
+    opacity: 1;
+    color: #007bff;
+    font-weight: bold;
+}
+
+th.sortable:not(.asc):not(.desc) .sort-icon::after {
+    content: "▲▼";
+    opacity: 0.4;
+    font-size: 0.8em;
+    letter-spacing: -2px;
+}
+
+/* 매트릭스 필터 스타일 */
+.matrix-filters {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 3px 16px;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    margin-right: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    justify-content: flex-end;
+    width: auto;
+    flex: none;
+}
+
+.filter-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.filter-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #495057;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.filter-icon {
+    display: none;
+}
+
+.checkbox-group {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.modern-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    position: relative;
+    padding: 6px 10px;
+    background: white;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    border: 1px solid #dee2e6;
+}
+
+.modern-checkbox:hover {
+    background: #f8f9fa;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modern-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width: 16px;
+    height: 16px;
+    background: #e9ecef;
+    border: 2px solid #ced4da;
+    border-radius: 4px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.modern-checkbox input[type="checkbox"]:checked + .checkmark {
+    background: #007bff;
+    border-color: #007bff;
+}
+
+.modern-checkbox input[type="checkbox"]:checked + .checkmark::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.label-text {
+    color: #495057;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.btn-reset {
+    background: #6c757d;
+    color: white;
+    border: 1px solid #6c757d;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-reset:hover {
+    background: #5a6268;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.reset-icon {
+    display: none;
+}
+
+/* 교과목 관리 수정모드 버튼 스타일 */
+.btn-edit-mode-courses {
+    background: #28a745;
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    margin-left: 10px;
+    outline: none;
+}
+
+.btn-edit-mode-courses:hover {
+    background: #218838;
+    border: none;
+    outline: none;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+}
+
+.btn-edit-mode-courses.active {
+    background: #dc3545;
+    border: none;
+    outline: none;
+}
+
+.btn-edit-mode-courses.active:hover {
+    background: #c82333;
+    border: none;
+    outline: none;
+}
+
+/* 교과목 관리 컨트롤 배치 */
+.courses-controls {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.btn-add,
+.btn-edit-mode-courses {
+    vertical-align: middle;
+    line-height: 1.5;
+    margin-top: 0;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+}
+
+
+
+.courses-controls-right {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* 매트릭스 수정모드 버튼 빨간색 */
+.btn-edit-mode-matrix {
+    background: #28a745;
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    outline: none;
+}
+
+.btn-edit-mode-matrix:hover {
+    background: #218838;
+    border: none;
+    outline: none;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+}
+
+.btn-edit-mode-matrix.active {
+    background: #dc3545;
+    border: none;
+    outline: none;
+}
+
+.btn-edit-mode-matrix.active:hover {
+    background: #c82333;
+    border: none;
+    outline: none;
+}
+
+.criteria-partial {
+    color: #bbb;
+    font-weight: normal;
+}
+
+/* 기존 테두리색 #dee2e6 → #bbb로 일괄 변경 */
+table, .matrix-table, #coursesTable,
+th, td, .matrix-table th, .matrix-table td {
+    border-color: #bbb !important;
+}
+
+/* 교과목 블록 스타일 */
+.course-block {
+    background: #f8f9fa;
+    border: none;
+    border-radius: 12px;
+    margin: 1px auto; /* 중앙 정렬 */
+    padding: 2px 6px;  /* 원래대로 복원 */
+    cursor: grab;
+    user-select: none;
+    transition: all 0.2s ease;
+    font-size: 12px;  /* 원래대로 복원 */
+    min-height: 32px;  /* 원래대로 복원 */
+    min-width: 100px;  /* 최소 폭 설정 */
+    max-width: 200px;  /* 최대 폭 200px로 제한 */
+    width: 100%;  /* 컬럼 폭에 맞춤 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+/* 카테고리(구분)별 색상 */
+.course-block-category-liberal {
+    background: #e1e5e8;
+}
+.course-block-category-thinking {
+    background: #e3f2fd;
+}
+.course-block-category-design {
+    background: #ffebee;
+}
+.course-block-category-tech {
+    background: #fff3e0;
+}
+.course-block-category-practice {
+    background: #e8f5e8;
+}
+.course-block-category-etc {
+    background: #f3e5f5;
+}
+
+/* 과목분류별 색상 (공통가치대응 탭용) */
+.course-block-type-design {
+    background: #e8e8e8;
+}
+.course-block-type-tech {
+    background: #fff3e0;
+}
+.course-block-type-practice {
+    background: #e8f5e8;
+}
+.course-block-type-digital {
+    background: #f5f2e5;
+}
+.course-block-type-history {
+    background: #ffece1;
+}
+.course-block-type-theory {
+    background: #e0f2f1;
+}
+.course-block-type-urban {
+    background: #fce4ec;
+}
+.course-block-type-social {
+    background: #e8eaf6;
+}
+.course-block-type-extracurricular {
+    background: #f1f8e9;
+}
+.course-block-type-unclassified {
+    background: #f6f6f6;
+}
+.course-block-type-default {
+    background: #f5f5f5;
+}
+
+.course-block:hover {
+    background: #e9ecef;
+    border-color: #adb5bd;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.course-block:active {
+    cursor: grabbing;
+    transform: scale(0.98);
+}
+
+.course-block.dragging {
+    opacity: 0.5;
+    transform: rotate(5deg);
+}
+
+.course-block-title {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0px;
+    line-height: 1.2;  /* 원래대로 복원 */
+    font-size: 13px;  /* 원래대로 복원 */
+}
+
+.course-credits-text {
+    font-weight: normal;
+}
+
+.course-block-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;  /* 원래대로 복원 */
+    color: #6c757d;
+    width: 100%;
+}
+
+.course-description {
+    font-size: 10px;
+    color: #6c757d;
+    font-style: italic;
+    line-height: 1.2;
+    margin-top: 2px;
+}
+
+.course-block-original-name {
+    font-size: 9px;
+    color: #999;
+    font-style: italic;
+    line-height: 1.1;
+    margin-top: 1px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 이수모형표 전체 테이블 레이아웃 */
+.curriculum-table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+/* 학년-학기 셀은 웹페이지 폭에 맞게 동일한 폭으로 자동 조정 */
+.curriculum-table td[id^="cell-"] {
+    min-width: 100px;
+    width: 8.33% !important; /* 12개 컬럼 중 1개씩 균등 분배 */
+    max-width: none !important;
+    min-height: 20px;  /* 80px에서 40px로 줄임 */
+    height: auto !important; /* 내용에 따라 자동 높이 조절 */
+    position: relative;
+    vertical-align: top;
+    padding: 10px;  /* 셀 내부 여백 5px */
+}
+
+/* 범례, 번호, 구분, 학점 셀은 내용에 맞게 자동 조정 */
+.curriculum-table td:not([id^="cell-"]),
+.curriculum-table th {
+    width: auto !important;
+    min-width: none !important;
+}
+
+.curriculum-table td[id^="cell-"]:hover {
+    background-color: #f8f9fa;
+}
+
+/* 기술분야 드롭존 스타일 */
+.curriculum-table td[id*="-구조-"],
+.curriculum-table td[id*="-환경-"],
+.curriculum-table td[id*="-시공-"],
+.curriculum-table td[id*="-디지털-"] {
+    position: relative;
+    min-height: 0px;  /* 60px에서 35px로 줄임 */
+    transition: all 0.3s ease;
+}
+
+/* 드래그 오버 상태 */
+.curriculum-table td[id^="cell-"]:has(.course-block:hover) {
+    background-color: #f8f9fa;
+    border-color: #bbb;
+}
+
+/* 이수모형 테이블의 교과목 블럭 폭 설정 */
+.curriculum-table .course-block {
+    min-width: 100px;  /* 최소 폭 100px */
+    max-width: 200px;  /* 최대 폭 200px로 제한 */
+    width: calc(100% - 4px);  /* 셀 폭에서 마진 제외한 전체 */
+}
+
+/* 학점 열 폭 조정 */
+.curriculum-table th:last-child,
+.curriculum-table td:last-child {
+    min-width: 220px;
+    width: 220px;
+}
+
+/* 교과목 블록 툴팁 스타일 */
+.course-block {
+    position: relative;
+}
+
+/* 🌟 개선된 커스텀 교과목 툴팁 스타일 */
+.custom-course-tooltip {
+    position: absolute;
+    background: #2d3748;
+    color: #ffffff;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 500;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25), 0 2px 6px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    min-width: 140px;
+    max-width: 280px;
+    pointer-events: none;
+    transition: opacity 0.2s ease-in-out;
+    opacity: 1;
+    line-height: 0.5;
+    border: 1px solid rgba(255,255,255,0.12);
+    white-space: pre-line;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.3px;
+}
+
+.custom-course-tooltip .tooltip-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: #ffd86b;
+    letter-spacing: 0.5px;
+    display: block;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 4px;
+}
+
+.custom-course-tooltip .tooltip-row {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    word-break: keep-all;
+    line-height: 1.15;
+    display: block;
+}
+
+.custom-course-tooltip .tooltip-row:last-child {
+    margin-bottom: 0;
+}
+
+.custom-course-tooltip .tooltip-row b {
+    font-weight: 600;
+    color: #e2e8f0;
+}
+
+/* 이수모형 수정모드 버튼 스타일 */
+.btn-edit-mode-curriculum {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    outline: none;
+}
+
+.btn-edit-mode-curriculum:hover {
+    background: #218838;
+    border: none;
+    outline: none;
+}
+
+.btn-edit-mode-curriculum.active {
+    background: #dc3545;
+    border: none;
+    outline: none;
+}
+
+.btn-edit-mode-curriculum.active:hover {
+    background: #c82333;
+    border: none;
+    outline: none;
+}
+
+#font-size-display,
+#curriculum-font-size-display,
+#commonValues-font-size-display {
+    font-size: 12px;
+    font-weight: 500;
+    color: #6b6b6b;
+    min-width: 40px;
+    text-align: center;
+}
+
+/* 이수모형 테이블 셀 텍스트 가운데 정렬 */
+.curriculum-table td[id^="cell-"] {
+    text-align: center;
+    vertical-align: top;
+}
+
+/* 변경된 교과목 블록 강조 스타일 */
+
+/* 공통 변경 블록 스타일 */
+.course-block.highlighted,
+.course-block.modified {
+    position: relative;
+    z-index: 2;
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+    border-width: 3px !important;
+    border-style: solid !important;
+}
+
+.course-block.highlighted .course-block-title,
+.course-block.modified .course-block-title,
+.course-block.deleted .course-block-title,
+.course-block.ghost .course-block-title {
+    font-size: 1.1em !important;
+    font-weight: 700 !important;
+}
+
+.course-block.highlighted .course-block-info,
+.course-block.modified .course-block-info {
+    font-size: 1.2em !important;
+}
+
+.course-block.modified .course-block-original-name {
+    font-size: 10px !important;
+    color: #bbb !important;
+}
+
+/* 수정된 과목 스타일 (파란색 계열) */
+.course-block.modified {
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.3) !important;
+}
+
+.course-block.modified.course-block-liberal {
+    background: #d6d8db !important;
+    border-color: #1976d2 !important;
+}
+
+.course-block.modified.course-block-thinking {
+    background: #bbdefb !important;
+    border-color: #0d47a1 !important;
+}
+
+.course-block.modified.course-block-design {
+    background: #ffcdcd !important;
+    border-color: #1976d2 !important;
+}
+
+.course-block.modified.course-block-tech {
+    background: #ffe0b2 !important;
+    border-color: #1976d2 !important;
+}
+
+.course-block.modified.course-block-practice {
+    background: #c8e6c9 !important;
+    border-color: #1976d2 !important;
+}
+
+/* 추가된 과목 스타일 (빨간색 계열) */
+.course-block.highlighted {
+    border: 2px solid #f44336 !important;
+    box-shadow: 0 2px 8px rgba(244, 67, 54, 0.3) !important;
+}
+
+.course-block.highlighted.course-block-liberal {
+    background: #d6d8db !important;
+    border-color: #f44336 !important;
+}
+
+.course-block.highlighted.course-block-thinking {
+    background: #bbdefb !important;
+    border-color: #d32f2f !important;
+}
+
+.course-block.highlighted.course-block-design {
+    background: #ffcdd2 !important;
+    border-color: #f44336 !important;
+}
+
+.course-block.highlighted.course-block-tech {
+    background: #ffe0b2 !important;
+    border-color: #f44336 !important;
+}
+
+.course-block.highlighted.course-block-practice {
+    background: #c8e6c9 !important;
+    border-color: #d32f2f !important;
+}
+
+/* 삭제된 과목 스타일 (회색 계열) */
+.course-block.deleted {
+    margin: 0 !important;
+    padding: 2px 6px !important;
+    min-width: 0 !important;
+    opacity: 0.4 !important;
+    border: 1.5px dashed #bbb;
+    background: #f5f5f5;
+    color: #888;
+}
+
+.course-block.deleted .course-block-title {
+    font-size: 1.1em !important;
+    font-weight: 700 !important;
+    color: #757575 !important; /* 회색 글씨 */
+    font-style: italic !important; /* 이탤릭 */
+    text-decoration: line-through !important; /* 취소선 */
+}
+
+.course-block.deleted .course-block-info {
+    font-size: 1.2em !important;
+    color: #9e9e9e !important; /* 회색 글씨 */
+    font-style: italic !important; /* 이탤릭 */
+    text-decoration: line-through !important; /* 취소선 */
+}
+
+.course-block.deleted .course-credits-text {
+    color: #9e9e9e !important; /* 학점 텍스트도 회색 */
+    text-decoration: line-through !important; /* 취소선 */
+}
+
+.course-block.deleted .course-description {
+    color: #bdbdbd !important; /* 상세내용도 회색 */
+}
+
+/* 삭제된 교과목 툴팁 스타일 */
+.custom-course-tooltip .tooltip-row[style*="color: #f44336"] {
+    background: rgba(244, 67, 54, 0.1);
+    padding: 2px 4px;
+    border-radius: 3px;
+    border-left: 3px solid #f44336;
+    margin: 2px 0;
+}
+
+/* 🌟 vis-network 엣지 툴팁 개선 스타일 */
+.vis-tooltip {
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+    padding: 8px 12px !important;
+    background: #2d3748 !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25), 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    max-width: 200px !important;
+    white-space: nowrap !important;
+    z-index: 10000 !important;
+    pointer-events: none !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+    letter-spacing: 0.3px !important;
+    transition: opacity 0.2s ease-in-out !important;
+    animation: tooltipFadeIn 0.2s ease-out !important;
+}
+
+/* 툴팁 등장 애니메이션 */
+@keyframes tooltipFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* vis-network 툴팁 텍스트 스타일 */
+.vis-tooltip-text {
+    font-family: 'Noto Sans KR', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    color: #ffffff !important;
+    text-align: center !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* 🎨 다양한 테마별 엣지 툴팁 스타일 */
+.vis-tooltip[data-edge-type="yearSemester"] {
+    background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
+    border: 1px solid rgba(59, 130, 246, 0.3) !important;
+}
+
+.vis-tooltip[data-edge-type="subjectType-설계"] {
+    background: linear-gradient(135deg, #9e9e9e, #757575) !important;
+    border: 1px solid rgba(158, 158, 158, 0.3) !important;
+}
+
+.vis-tooltip[data-edge-type="subjectType-디지털"] {
+    background: linear-gradient(135deg, #a1887f, #8d6e63) !important;
+    border: 1px solid rgba(161, 136, 127, 0.3) !important;
+}
+
+.vis-tooltip[data-edge-type="subjectType-역사"] {
+    background: linear-gradient(135deg, #d84315, #b71c1c) !important;
+    border: 1px solid rgba(216, 67, 21, 0.3) !important;
+}
+
+.vis-tooltip[data-edge-type="subjectType-이론"] {
+    background: linear-gradient(135deg, #00897b, #00695c) !important;
+    border: 1px solid rgba(0, 137, 123, 0.3) !important;
+}
+
+/* 호버 상태에서 툴팁 강조 효과 */
+.vis-tooltip:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3), 0 3px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* 반응형 디자인 - 모바일 최적화 */
+@media (max-width: 768px) {
+    .vis-tooltip {
+        font-size: 12px !important;
+        padding: 6px 10px !important;
+        max-width: 180px !important;
+        border-radius: 6px !important;
+    }
+    
+    .vis-tooltip-text {
+        font-size: 12px !important;
+    }
+}
+
+/* 호버 효과 */
+.course-block.highlighted:hover,
+.course-block.modified:hover {
+    transform: scale(1.05) !important;
+}
+
+.course-block.highlighted:hover {
+    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.4) !important;
+}
+
+.course-block.modified:hover {
+    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.4) !important;
+}
+
+.course-block.deleted:hover {
+    opacity: 0.8;
+    /* 삭제된 블록은 크기 변화 없음 */
+}
+
+.course-block.ghost {
+    opacity: 0.7 !important;
+    filter: grayscale(0.6) brightness(0.95) !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2) !important;
+    cursor: default !important;
+    border: 2px dashed #888 !important;
+    background: #e8e8e8 !important;
+    position: relative;
+    font-size: 11px !important;
+    transition: all 0.2s ease !important;
+}
+
+.course-block.ghost:hover {
+    opacity: 0.85 !important;
+    filter: grayscale(0.4) brightness(0.95) !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3) !important;
+    border: 2px dashed #555 !important;
+    background: #d8d8d8 !important;
+}
+
+.course-block.ghost .course-block-title {
+    color: #666 !important;
+    font-style: italic !important;
+    transition: color 0.2s ease !important;
+}
+
+.course-block.ghost:hover .course-block-title {
+    color: #333 !important;
+}
+
+.course-block.ghost .course-block-info {
+    color: #888 !important;
+    font-style: italic !important;
+    transition: color 0.2s ease !important;
+}
+
+.course-block.ghost:hover .course-block-info {
+    color: #555 !important;
+}
+
+/* 화살표 호버 시 고스트 블럭 하이라이트 */
+.course-block.ghost.arrow-hover {
+    opacity: 0.85 !important;
+    filter: grayscale(0.4) brightness(0.95) !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3) !important;
+    border: 2px dashed #555 !important;
+    background: #d8d8d8 !important;
+}
+
+.course-block.ghost.arrow-hover .course-block-title {
+    color: #333 !important;
+}
+
+.course-block.ghost.arrow-hover .course-block-info {
+    color: #555 !important;
+}
+
+.curriculum-block.highlighted {
+    border: 3px solid #f44336 !important;
+    box-shadow: 0 0 16px #f4433688, 0 0 0 4px #fff inset;
+    background: linear-gradient(120deg, #fff5f5 80%, #ffcdd2 100%);
+    position: relative;
+    animation: highlight-blink 1.2s linear infinite alternate;
+    z-index: 2;
+}
+@keyframes highlight-blink {
+    0% { box-shadow: 0 0 16px #f4433688, 0 0 0 4px #fff inset; }
+    100% { box-shadow: 0 0 32px #f44336cc, 0 0 0 4px #fff inset; }
+}
+.curriculum-block.highlighted::after {
+    content: '★';
+    position: absolute;
+    top: 4px; right: 8px;
+    font-size: 18px;
+    color: #f44336;
+    pointer-events: none;
+}
+
+.curriculum-block.modified {
+    border: 3.5px solid #283593 !important;
+    background: linear-gradient(120deg, #c5cae9 60%, #7986cb 100%);
+    position: relative;
+    z-index: 3;
+    box-shadow: 0 0 18px #28359355, 0 0 0 5px #fff inset;
+    animation: modified-blink 1.2s linear infinite alternate;
+}
+@keyframes modified-blink {
+    0% { box-shadow: 0 0 18px #28359355, 0 0 0 5px #fff inset; }
+    100% { box-shadow: 0 0 36px #283593cc, 0 0 0 5px #fff inset; }
+}
+.curriculum-block.modified .course-block-title {
+    font-size: 1.45em !important;
+    font-weight: bold;
+    color: #0d133d !important;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 8px #fff, 0 0 2px #28359388;
+}
+.curriculum-block.modified::after {
+    content: '✎';
+    position: absolute;
+    top: 4px; right: 8px;
+    font-size: 20px;
+    color: #283593;
+    pointer-events: none;
+    filter: drop-shadow(0 0 2px #fff);
+}
+.change-history-apply-btn {
+    display: inline-block;
+    margin-right: 30px;
+    background: none;
+    border: none;
+    color: #4caf50;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s;
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+}
+
+.change-history-delete-btn {
+    display: inline-block;
+    margin-right: 0px;
+    background: none;
+    border: none;
+    color: #e53935;
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s;
+    vertical-align: middle;
+}
+
+
+#changeHistoryPanelList li:hover .change-history-delete-btn,
+#changeHistoryPanelList li:hover .change-history-apply-btn {
+    opacity: 1;
+}
+
+.matrix-extra-table {
+    font-size: var(--font-size);
+    border-top: none;
+    margin-top: 0;
+    
+}
+
+.matrix-extra-table td,
+.matrix-extra-table th {
+    padding: 8px 3px;
+    border: 1px solid #dee2e6;
+    height: 20px;
+    text-align: center;
+    font-weight: 400;
+    font-family: var(--font-family);
+    white-space: normal;
+    /* border: 1px solid #bbb !important; */
+    overflow: visible;
+    text-overflow: clip;
+    position: relative;
+    min-width: 8px;
+    width: calc((100% - 370px) / 18);
+    vertical-align: middle;
+    word-break: keep-all;
+    word-wrap: break-word;
+    line-height: 1.2;
+}
+
+
+/* 공통가치대응 테이블 컬럼별 스타일 */
+.common-values-table td.col-type {
+    background: #faf8f9b6;
+    font-weight: 600;
+    color: #2c3e50;
+    text-align: center;
+}
+.common-values-table td.col-major-required,
+.common-values-table td.col-major-elective {
+    background: #f8f9fa;
+    font-weight: 500;
+    text-align: center;
+}
+.common-values-table td.col-major-required-credit,
+.common-values-table td.col-major-elective-credit {
+    background: #f8f9fa;
+    font-weight: 600;
+    text-align: center;
+    color: #495057;
+}
+
+
+.common-values-table .block-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+    gap: 8px;
+}
+
+/* 과목분류 배지 스타일 */
+.subject-type-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 500;
+    text-align: center;
+    min-width: 50px;
+}
+
+.badge-design {
+    background: #e3f2fd;
+    color: #1976d2;
+    border: 1px solid #bbdefb;
+}
+
+.badge-digital {
+    background: #f3e5f5;
+    color: #7b1fa2;
+    border: 1px solid #e1bee7;
+}
+
+.badge-history {
+    background: #fff3e0;
+    color: #f57c00;
+    border: 1px solid #ffcc02;
+}
+
+.badge-theory {
+    background: #e8f5e8;
+    color: #388e3c;
+    border: 1px solid #c8e6c9;
+}
+
+.badge-urban {
+    background: #fce4ec;
+    color: #c2185b;
+    border: 1px solid #f8bbd9;
+}
+
+.badge-social {
+    background: #f1f8e9;
+    color: #689f38;
+    border: 1px solid #dcedc8;
+}
+
+.badge-tech {
+    background: #e0f2f1;
+    color: #00796b;
+    border: 1px solid #b2dfdb;
+}
+
+.badge-practice {
+    background: #fff8e1;
+    color: #f57f17;
+    border: 1px solid #ffecb3;
+}
+
+.badge-extracurricular {
+    background: #fafafa;
+    color: #616161;
+    border: 1px solid #e0e0e0;
+}
+
+.badge-default {
+    background: #f5f5f5;
+    color: #757575;
+    border: 1px solid #e0e0e0;
+}
+
+.badge-unclassified {
+    background: #fafafa;
+    color: #9e9e9ed5;
+    border: 1px solid #e0e0e0;
+}
+
+/* 공통가치대응 탭 수정모드 버튼 스타일 */
+.btn-edit-mode-commonValues {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    outline: none;
+}
+
+.btn-edit-mode-commonValues:hover {
+    background: #218838;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border: none;
+    outline: none;
+}
+
+.btn-edit-mode-commonValues.active {
+    background: #dc3545;
+    border: none;
+    outline: none;
+}
+
+.btn-edit-mode-commonValues.active:hover {
+    background: #c82333;
+    border: none;
+    outline: none;
+}
+
+/* 공통가치대응 Value 컬럼 선택 상태 스타일 */
+.selected-value-group {
+    background: linear-gradient(135deg, #64FFDA 0%, #00BCD4 100%) !important;
+    color: #000 !important;
+    font-weight: bold !important;
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.6) !important;
+    transform: scale(1.02) !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+.selected-value-group::after {
+    content: '✓';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #000;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.selected-group {
+    background: rgba(100, 255, 218, 0.15) !important;
+    border: 2px solid #64FFDA !important;
+    box-shadow: inset 0 0 10px rgba(100, 255, 218, 0.2) !important;
+    transform: scale(1.01) !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+}
+
+.selected-group::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(100, 255, 218, 0.1) 50%, transparent 70%);
+    animation: shimmer 2s infinite;
+    pointer-events: none;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* 공통가치대응 Value 헤더 호버 효과 */
+.common-values-table th[data-value-key="value1"]:hover {
+    background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%) !important;
+    color: white !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
+    cursor: pointer !important;
+    transform: scale(1.01) !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.3) !important;
+}
+
+.common-values-table th[data-value-key="value2"]:hover {
+    background: linear-gradient(135deg, #d81b60 0%, #c2185b 100%) !important;
+    color: white !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
+    cursor: pointer !important;
+    transform: scale(1.01) !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 2px 8px rgba(216, 27, 96, 0.3) !important;
+}
+
+.common-values-table th[data-value-key="value3"]:hover {
+    background: linear-gradient(135deg, #388e3c 0%, #2e7d32 100%) !important;
+    color: white !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
+    cursor: pointer !important;
+    transform: scale(1.01) !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 2px 8px rgba(56, 142, 60, 0.3) !important;
+}
+
+/* 공통가치대응 Value 헤더 선택 상태 (호버와 동일) */
+.common-values-table th[data-value-key="value1"].selected {
+    background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%) !important;
+    color: white !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
+    cursor: pointer !important;
+    transform: scale(1.01) !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.3) !important;
+}
+
+.common-values-table th[data-value-key="value2"].selected {
+    background: linear-gradient(135deg, #d81b60 0%, #c2185b 100%) !important;
+    color: white !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
+    cursor: pointer !important;
+    transform: scale(1.01) !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 2px 8px rgba(216, 27, 96, 0.3) !important;
+}
+
+.common-values-table th[data-value-key="value3"].selected {
+    background: linear-gradient(135deg, #388e3c 0%, #2e7d32 100%) !important;
+    color: white !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
+    cursor: pointer !important;
+    transform: scale(1.01) !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 2px 8px rgba(56, 142, 60, 0.3) !important;
+}
+
+/* 🔗 스플라인 호버 시 헤더 효과 */
+.common-values-table th[data-value-key="value1"].spline-hovered {
+    background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%) !important;
+    color: white !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
+    transform: scale(1.005) !important;
+    transition: all 0.2s ease !important;
+    z-index: 5 !important;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.3) !important;
+}
+
+.common-values-table th[data-value-key="value2"].spline-hovered {
+    background: linear-gradient(135deg, #d81b60 0%, #c2185b 100%) !important;
+    color: white !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
+    transform: scale(1.005) !important;
+    transition: all 0.2s ease !important;
+    z-index: 5 !important;
+    box-shadow: 0 2px 8px rgba(216, 27, 96, 0.3) !important;
+}
+
+.common-values-table th[data-value-key="value3"].spline-hovered {
+    background: linear-gradient(135deg, #388e3c 0%, #2e7d32 100%) !important;
+    color: white !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
+    transform: scale(1.005) !important;
+    transition: all 0.2s ease !important;
+    z-index: 5 !important;
+    box-shadow: 0 2px 8px rgba(56, 142, 60, 0.3) !important;
+}
+
+/* 공통가치대응 Value 셀 호버 효과 */
+.common-values-table .col-value1:hover,
+.common-values-table .col-value2:hover,
+.common-values-table .col-value3:hover {
+    background: rgba(100, 255, 218, 0.1) !important;
+    cursor: pointer !important;
+    transform: scale(1.01) !important;
+    transition: all 0.2s ease !important;
+    box-shadow: inset 0 0 5px rgba(100, 255, 218, 0.3) !important;
+}
+
+/* 공통가치대응 Value 컬럼 헤더 기본 스타일 */
+.common-values-table th[data-value-key="value1"] {
+    background: rgba(25, 118, 210, 0.2) !important;
+    color: #1976d2 !important;
+    text-shadow: none !important;
+}
+
+.common-values-table th[data-value-key="value2"] {
+    background: rgba(216, 27, 96, 0.2) !important;
+    color: #d81b60 !important;
+    text-shadow: none !important;
+}
+
+.common-values-table th[data-value-key="value3"] {
+    background: rgba(56, 142, 60, 0.2) !important;
+    color: #388e3c !important;
+    text-shadow: none !important;
+}
+
+/* 색상 범례 스타일 */
+.color-legend {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-right: 25px;
+    flex-wrap: wrap;
+}
+
+.color-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: #555;
+    white-space: nowrap;
+}
+
+.color-legend-box {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.color-legend-label {
+    font-size: 14px;
+    color: #333;
+    font-weight: 600;
+}
+
+/* 모바일에서 색상 범례 반응형 */
+@media (max-width: 768px) {
+    .color-legend {
+        gap: 10px;
+        margin-right: 18px;
+    }
+    
+    .color-legend-item {
+        gap: 5px;
+    }
+    
+    .color-legend-box {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .color-legend-label {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {  
+    .color-legend {
+        gap: 8px;
+        margin-right: 15px;
+    }
+    
+    .color-legend-box {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .color-legend-label {
+        font-size: 11px;
+    }
+}
+
+/* 설계 교과목 색상 기준 전환 스타일 */
+.course-block-design.color-mode-subject-type {
+    background: #e8e8e8; /* 과목분류 모드: 연한 빨간색 */
+}
+
+.course-block-design.color-mode-category {
+    background: #ffebee; /* 구분 모드: 회색 */
+}
+
+/* 공통가치대응 테이블 셀 기본 스타일 */
+.common-values-table td {
+    padding: 5px;  /* 셀 내부 여백 5px */
+}
+
+.common-values-table td[rowspan] {
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.common-values-table th {
+    border-top: 1px solid #bbb !important;
+}
+
+.common-values-table .course-block,
+.common-values-table .course-block-title,
+.common-values-table .course-block-info {
+    font-size: var(--font-size) !important;
+
+}
+
+.common-values-table .course-block {
+    min-width: 100px;  /* 최소 폭 100px로 통일 */
+    max-width: 200px;  /* 최대 폭 200px로 제한 */
+    width: 100%;  /* 컬럼 폭에 맞춤 */
+}
+
+#coursesTable th, #coursesTable td {
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+
+#coursesTable th {
+    border-top: 1px solid #bbb !important;
+}
+
+/* 수행평가 매트릭스 헤더 1~4행 폰트 두껍게 */
+.matrix-table thead tr:nth-child(-n+4) th {
+    font-weight: 700 !important;
+}
+
+.curriculum-table th:nth-child(-n+3),
+.curriculum-table td:nth-child(-n+3) {
+    font-weight: bold;
+}
+
+.curriculum-table th {
+    border-top: 1px solid #bbb !important;
+}
+
+.curriculum-table th:nth-child(1),
+.curriculum-table td:nth-child(1) {
+    width: 80px !important;
+    min-width: 80px !important;
+    max-width: 10px !important;
+}
+.curriculum-table th:nth-child(2),
+.curriculum-table td:nth-child(2) {
+    width: 50px !important;
+    min-width: 70px !important;
+    max-width: 10px !important;
+}
+.curriculum-table th:nth-child(13),
+.curriculum-table td:nth-child(13) {
+    width: 80px !important;
+    min-width: 80px !important;
+    max-width: 120px !important;
+}
+.curriculum-table tr:nth-child(5) td,
+.curriculum-table tr:nth-child(5) th,
+.curriculum-table tr:nth-child(6) td,
+.curriculum-table tr:nth-child(12) td,
+.curriculum-table tr:nth-child(16) td,
+.curriculum-table tr:nth-child(6) th {
+    background: #f7f9fa !important; 
+    font-weight: 500 !important; 
+}
+
+/* 매트릭스 제목 편집 스타일 */
+#matrixTitle {
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin: 0;
+    display: inline-block;
+    min-width: 200px;
+    position: relative;
+}
+
+#matrixTitle[contenteditable="true"] {
+    background-color: #fffbe7;
+    border: 2px dashed #4a90e2;
+    outline: none;
+    cursor: text;
+    box-shadow: 0 2px 8px rgba(74, 144, 226, 0.2);
+    animation: titleEditPulse 2s infinite;
+}
+
+#matrixTitle[contenteditable="true"]:focus {
+    background-color: #fff3cd;
+    border-color: #2196f3;
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+    animation: none;
+}
+
+#matrixTitle[contenteditable="true"]::after {
+    content: "편집 중...";
+    position: absolute;
+    top: -25px;
+    left: 0;
+    font-size: 12px;
+    color: #4a90e2;
+    font-weight: 500;
+    background: rgba(74, 144, 226, 0.1);
+    padding: 2px 6px;
+    border-radius: 3px;
+    opacity: 0;
+    animation: fadeInOut 2s infinite;
+}
+
+@keyframes titleEditPulse {
+    0%, 100% { box-shadow: 0 2px 8px rgba(74, 144, 226, 0.2); }
+    50% { box-shadow: 0 2px 12px rgba(74, 144, 226, 0.4); }
+}
+
+@keyframes fadeInOut {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+#matrixTitle[contenteditable="false"] {
+    background-color: transparent;
+    border: none;
+    cursor: default;
+    box-shadow: none;
+    animation: none;
+}
+
+#matrixTitle[contenteditable="false"]::after {
+    display: none;
+}
+
+.common-values-table .editing-cell {
+    padding: 0 !important;
+    position: relative !important;
+}
+
+/* ===== 커리큘럼 표(이수모형표) 영역별 스타일 ===== */
+.curriculum-table .legend-cell,
+.curriculum-table .category-cell {
+    background: #e3eafc;
+    color: #1a237e;
+    font-weight: bold;
+    border-right: 2px solid #1a237e;
+}
+
+.curriculum-table .year-header,
+.curriculum-table .semester-header {
+    background: #fff3e0;
+    color: #bf360c;
+    font-weight: bold;
+    border-bottom: 2px solid #bf360c;
+}
+
+.curriculum-table .subject-cell.gyo-yang { background: #f5f5f5; color: #616161; }
+.curriculum-table .subject-cell.jun-gong { background: #e3f2fd; color: #1976d2; }
+.curriculum-table .subject-cell.sil-mu   { background: #fffde7; color: #fbc02d; }
+.curriculum-table .subject-cell.elective { background: #e0f2f1; color: #00897b; }
+
+.curriculum-table .sum-cell,
+.curriculum-table .total-cell {
+    background: #fbe9e7;
+    color: #d84315;
+    font-weight: bold;
+    border-left: 2px solid #d84315;
+}
+
+#header img {
+  vertical-align: middle;
+  margin-right: 16px;
+}
+
+.main-header-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.main-header-content img {
+  vertical-align: middle;
+  margin-right: 16px;
+}
+
+/* 내부 섹션 헤더(이미지 없음) */
+.section-header-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+/* 반응형 차트 레이아웃 */
+.charts-container {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+}
+
+.chart-wrapper {
+  flex: 1 !important;
+}
+
+/* 1200px 이상에서 가로 배치 */
+@media (min-width: 1200px) {
+  .charts-container {
+    flex-direction: row !important;
+    gap: 30px !important;
+  }
+  
+  .chart-wrapper {
+    width: 50% !important;
+    flex: 1 !important;
+  }
+}
+
+/* ===== 학년별 교과목 분포 표 스타일 ===== */
+#analysis .table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#analysis .table-container table th,
+#analysis .table-container table td {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+    min-width: 60px;
+    font-size: 14px;
+}
+
+#analysis .table-container table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    color: #333;
+}
+
+#analysis .table-container table td:first-child {
+    text-align: center;
+    font-weight: bold;
+    background-color: #f8f9fa;
+    min-width: 50px;
+}
+
+#analysis .table-container table td {
+    min-width: 50px;
+}
+
+.matrix-table tbody tr:hover {
+    background: #f0f4ff !important;
+    transition: background 0.2s;
+}
+
+.matrix-table .block-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+}
+@media (max-width: 900px) {
+    .matrix-table .block-wrap {
+        flex-direction: column;
+        gap: 4px;
+    }
+}
+
+.curriculum-table .block-wrap,
+.matrix-table .block-wrap,
+.common-values-table .block-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    gap: 4px;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+}
+@media (max-width: 900px) {
+    .curriculum-table .block-wrap,
+    .matrix-table .block-wrap,
+    .common-values-table .block-wrap {
+        flex-direction: column;
+        gap: 2px;
+    }
+}
+
+.course-block {
+    margin: 0;
+    padding: 2px 6px;
+}
+
+.change-history-list li {
+    font-size: 15px;
+    padding: 16px 18px;
+    word-break: keep-all;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    gap: 12px; 
+}
+#changeHistoryPanel {
+    overflow: hidden !important;
+    resize: none !important;
+    min-width: 320px !important;
+    min-height: 120px !important;
+    max-width: 90vw !important;
+    max-height: 90vh !important;
+}
+#changeHistoryPanelHeader {
+    font-size: 20px !important;
+    padding: 12px 12px 12px 12px !important;
+}
+.change-history-type {
+    font-size: 13px !important;
+    padding: 3px 10px !important;
+    min-width: 36px !important;
+}
+.change-history-summary {
+    font-size: 14px !important;
+    word-break: keep-all !important;
+    word-wrap: break-word !important;
+    display: inline-block !important;
+    max-width: calc(100% - 50px) !important;
+}
+.change-history-delete-btn {
+    font-size: 24px !important;
+    width: 30px !important;
+    height: 30px !important;
+    font-weight: normal !important;
+    /* margin-left: 34px !important; */
+}
+
+.drag-preview-placeholder {
+    background: #e3f2fd;
+    border: 2px dashed #2196f3;
+    color: #1976d2;
+    font-weight: bold;
+    border-radius: 12px;
+    margin: 4px 0;
+    z-index: 999;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+/* 이전 스타일 제거 - 아래쪽에 최신 스타일 정의됨 */
+.course-block.dragging {
+    opacity: 0.1 !important;
+    z-index: 1000 !important;
+    transform: scale(0.95) !important;
+    box-shadow: 0 4px 16px rgba(236, 28, 0, 0.3) !important;
+}
+.course-block.drag-over-animate {
+    /* transform은 JS에서 동적으로 지정 */
+    z-index: 0;
+}
+
+
+
+.block-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: all 0.3s ease;
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 30%;
+}
+
+/* 드래그 중일 때 블록 추가/제거에 의한 레이아웃 변화 방지 */
+body.dragging-course .block-wrap {
+  transition: none;
+}
+
+body.dragging-course .curriculum-table td[id^="cell-"],
+body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
+  transition: none;
+}
+
+/* 미리보기 블럭 스타일 - 블록 사이에 끼워넣는 효과 */
+.drag-preview-block {
+  opacity: 0.6 !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  position: relative !important;
+  z-index: 999 !important;
+  width: 100% !important;
+  height: auto !important;
+  border: 2px solid #2196f3 !important;
+  background-color: rgba(33, 150, 243, 0.1) !important;
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3) !important;
+  border-radius: 12px !important;
+  margin: 4px 0 !important;
+  transition: all 0.2s ease !important;
+}
+
+/* 플레이스홀더가 삽입될 때 애니메이션 */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scaleY(0);
+    margin: 0;
+  }
+  to {
+    opacity: 0.6;
+    transform: scaleY(1);
+    margin: 4px 0;
+  }
+}
+
+/* 플레이스홀더 펄스 애니메이션 */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 0.8;
+  }
+}
+
+.drag-preview-block * {
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
+
+.course-block {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.course-block:hover {
+  transform: scale(1.02);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* 구분없음 교과목 스타일 제거 - 일반 교과목과 동일하게 표시 */
+
+.course-block.dragging {
+  opacity: 0.7;
+  transform: scale(0.95);
+  box-shadow: 0 4px 16px rgba(40, 167, 69, 0.3);
+  z-index: 1000;
+}
+
+.cell-highlight {
+  position: relative;
+}
+
+/* 추가/변경/삭제 교과목 블럭 테두리 및 취소선 스타일 명확화 */
+.course-block.highlighted {
+    border: 2px solid #27ae60 !important; /* 녹색 */
+    box-shadow: 0 2px 8px rgba(39, 174, 96, 0.3) !important;
+}
+.course-block.modified {
+    border: 2px solid #1976d2 !important; /* 파란색 */
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.3) !important;
+}
+.course-block.deleted {
+    border: 1.5px dashed #f44336 !important; /* 빨간색 */
+    background: #f5f5f5 !important;
+    color: #888 !important;
+    opacity: 0.7 !important;
+}
+.course-block.deleted .course-block-title,
+.course-block.deleted .course-block-info,
+.course-block.deleted .course-credits-text,
+.course-block.deleted .course-description {
+    color: #f44336 !important;
+    text-decoration: line-through !important;
+    font-style: italic !important;
+    opacity: 1 !important;
+}
+
+.course-block.highlighted,
+.course-block.modified,
+.course-block.deleted {
+    font-size: inherit !important;
+}
+
+.course-block.highlighted .course-block-title,
+.course-block.modified .course-block-title,
+.course-block.deleted .course-block-title,
+.course-block.ghost .course-block-title,
+.course-block.highlighted .course-block-info,
+.course-block.modified .course-block-info,
+.course-block.deleted .course-block-info,
+.course-block.ghost .course-block-info,
+.course-block.deleted .course-block-credits-text,
+.course-block.deleted .course-block-description {
+    font-size: inherit !important;
+}
+
+/* 클라우드 동기화 로딩 스피너 */
+.cloud-spinner {
+    width: 56px;
+    height: 56px;
+    border: 7px solid #e3eafc;
+    border-top: 7px solid #1976d2;
+    border-radius: 50%;
+    animation: cloud-spin 1s linear infinite;
+    box-sizing: border-box;
+}
+@keyframes cloud-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 매트릭스 테이블 교과목 변경 상태 색상 */
+.matrix-table .course-added {
+    color: #28a745 !important;
+    font-weight: bold;
+}
+
+.matrix-table .course-deleted {
+    color: #dc3545 !important;
+    text-decoration: line-through;
+    font-weight: bold;
+}
+
+.matrix-table .course-modified {
+    color: #07bdff !important;
+    font-weight: bold;
+}
+
+/* 삭제된 교과목 행 스타일 */
+.matrix-table .deleted-course-row,
+#coursesTable .deleted-course-row {
+    opacity: 0.7;
+}
+
+/* 교과목 관리 탭 - 교과목 제목 스타일 */
+#coursesTable td.course-title-cell {
+    font-weight: bold;
+}
+
+/* 추가된 교과목 제목 (녹색) */
+#coursesTable tr.added-course td.course-title-cell {
+    color: #27ae60 !important;
+    font-weight: bold;
+}
+
+/* 수정된 교과목 제목 (파란색) */
+#coursesTable tr.modified-course td.course-title-cell {
+    color: #1976d2 !important;
+    font-weight: bold;
+}
+
+/* 삭제된 교과목 제목 (빨간색 + 취소선) */
+#coursesTable tr.deleted-course td.course-title-cell {
+    color: #f44336 !important;
+    text-decoration: line-through !important;
+    font-style: italic !important;
+    opacity: 0.8;
+}
+
+/* 삭제된 교과목의 매트릭스 마크 (빨간색) */
+.matrix-mark-deleted {
+    color: #dc3545 !important;
+}
+
+/* 삭제된 교과목의 필수 마크 (빨간색) */
+.deleted-course-dot {
+    color: #dc3545 !important;
+}
+
+/* 추가된 교과목의 매트릭스 마크 (녹색) */
+.matrix-mark-added {
+    color: #28a745 !important;
+}
+
+/* 매트릭스 점 수정 흔적 스타일 */
+/* 삭제된 점 - 회색으로 흔적 표시 */
+.matrix-mark-removed {
+    color: #999999;
+    opacity: 0.4;
+    text-decoration: line-through;
+    font-weight: normal;
+}
+
+/* 추가된 점 - 파란색 */
+.matrix-mark-new {
+    color: #007bff !important;
+    font-weight: bold;
+}
+
+/* 컬러 인디케이터 스타일 */
+.color-indicator {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    margin-right: 5px;
+    vertical-align: baseline;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* 인라인 체크박스 스타일 (교과목 관리 탭) */
+.change-status-filter {
+    margin-top: 0px;
+}
+
+.change-status-checkboxes {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.inline-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #f8f9fa;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.inline-checkbox:hover {
+    background: #e9ecef;
+    transform: translateY(-1px);
+}
+
+.inline-checkbox input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+    margin-right: 8px;
+    cursor: pointer;
+    accent-color: #2196f3;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+}
+
+.inline-checkbox.checked {
+    background: #e7f3ff;
+}
+
+.inline-checkbox span {
+    line-height: 1;
+    font-weight: 500;
+}
+
+/* 드롭다운 애니메이션 */
+@keyframes dropdownFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 수행평가 매트릭스 필터 내 컬러 인디케이터 */
+.label-text .color-indicator {
+    margin-left: 5px;
+}
+
+/* 체크박스 필터 드롭다운 스타일 */
+.checkbox-filter-dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    overflow: visible;
+}
+
+.filter-dropdown-btn {
+    width: 100%;
+    padding: 5px 10px;
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+    border: 1.5px solid #e1e7ed;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+
+.filter-dropdown-btn:hover {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-color: #2196f3;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(33,150,243,0.15);
+}
+
+.filter-dropdown-btn:active {
+    transform: translateY(0);
+}
+
+.filter-dropdown-btn span {
+    font-size: 13px !important;
+}
+
+.dropdown-arrow {
+    font-size: 10px !important;
+    color: #868e96;
+    transition: transform 0.3s ease;
+}
+
+.filter-dropdown-btn.active .dropdown-arrow {
+    transform: rotate(180deg);
+    color: #2196f3;
+}
+
+.filter-dropdown-content {
+    display: none;
+    position: absolute;
+    background: white;
+    min-width: 100%;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    border: 1px solid #e1e7ed;
+    border-radius: 10px;
+    z-index: 9999;
+    margin-top: 6px;
+    max-height: 320px;
+    overflow-y: auto;
+    animation: dropdownFadeIn 0.3s ease;
+}
+
+.filter-dropdown-content.show {
+    display: block;
+}
+
+.filter-checkbox-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s ease;
+    border-radius: 6px;
+    margin: 2px 4px;
+    line-height: 1;
+}
+
+.filter-checkbox-item:hover {
+    background: linear-gradient(135deg, #f0f7ff 0%, #e6f2ff 100%);
+    padding-left: 16px;
+}
+
+.filter-checkbox-item span {
+    display: inline-block;
+    line-height: 12px;
+}
+
+.filter-checkbox-item input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+    margin-right: 8px;
+    cursor: pointer;
+    accent-color: #2196f3;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+}
+
+/* 추가 모바일 최적화 스타일 */
+@media (max-width: 768px) {
+    /* 터치 스크롤 최적화 */
+    .table-container {
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: #888 #f1f1f1;
+    }
+
+    .table-container::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .table-container::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 3px;
+    }
+
+    .table-container::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 3px;
+    }
+
+    .table-container::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+    /* 터치 인터랙션 개선 */
+    .btn, .tab, .course-block {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    /* 교과목 블록 터치 최적화 */
+    .course-block {
+        cursor: pointer;
+        transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+
+    .course-block:active {
+        transform: scale(0.98);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    /* 매트릭스 점 터치 최적화 */
+    .matrix-dot {
+        cursor: pointer;
+        transition: transform 0.1s ease;
+    }
+
+    .matrix-dot:active {
+        transform: scale(1.2);
+    }
+
+    /* 필터 터치 최적화 */
+    .modern-checkbox {
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .modern-checkbox:active {
+        transform: scale(0.95);
+    }
+
+    /* 모달 터치 최적화 */
+    .modal {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .modal-content {
+        -webkit-overflow-scrolling: touch;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    /* 버튼 터치 최적화 */
+    .btn:active {
+        transform: scale(0.98);
+    }
+
+    /* 탭 터치 최적화 */
+    .tab:active {
+        transform: scale(0.98);
+    }
+
+    /* 드래그 앤 드롭 모바일 최적화 */
+    .course-block.dragging {
+        opacity: 0.8;
+        transform: scale(1.05);
+        z-index: 1000;
+    }
+
+    /* 툴팁 모바일 최적화 - 개선됨 */
+    .custom-course-tooltip {
+        max-width: 260px;
+        font-size: 12px;
+        padding: 8px 12px;
+        border-radius: 6px;
+    }
+
+    .custom-course-tooltip .tooltip-title {
+        font-size: 13px;
+        margin-bottom: 6px;
+        padding-bottom: 4px;
+    }
+
+    .custom-course-tooltip .tooltip-row {
+        font-size: 11px;
+        margin: 4px 0;
+    }
+
+    /* 버전 관리 모바일 최적화 */
+    .version-item {
+        padding: 8px;
+        margin-bottom: 8px;
+    }
+
+    .version-item-name {
+        font-size: 13px;
+    }
+
+    .version-item-description {
+        font-size: 11px;
+    }
+
+    .version-item-date {
+        font-size: 10px;
+    }
+
+    .version-item-actions .btn-sm {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+
+    /* 변경 이력 패널 모바일 최적화 */
+    #changeHistoryPanel {
+        width: 95%;
+        max-height: 80vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .change-history-list li {
+        padding: 8px;
+        font-size: 11px;
+    }
+
+    .change-history-type {
+        font-size: 10px;
+    }
+
+    .change-history-summary {
+        font-size: 11px;
+    }
+
+    /* 디자인 패널 모바일 최적화 */
+    .design-controls {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .design-group {
+        margin-bottom: 8px;
+    }
+
+    .design-group label {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 11px;
+    }
+
+    .design-group input[type="range"] {
+        width: 100%;
+        margin: 4px 0;
+    }
+
+    .design-group select {
+        width: 100%;
+        font-size: 11px;
+        padding: 6px 8px;
+    }
+
+    .design-group span {
+        font-size: 10px;
+    }
+
+    /* 분석 섹션 모바일 최적화 */
+    .charts-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .chart-wrapper {
+        min-height: 200px;
+    }
+
+    #analysis .table-container table {
+        font-size: 10px;
+    }
+
+    #analysis .table-container table th,
+    #analysis .table-container table td {
+        padding: 4px 6px;
+        font-size: 9px;
+    }
+
+    /* 매트릭스 컨트롤 모바일 최적화 */
+    .matrix-controls {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+    }
+
+    .matrix-controls .btn {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .font-size-controls {
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .font-size-controls .btn-sm {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+
+    .font-size-display {
+        font-size: 11px;
+        padding: 4px 8px;
+    }
+
+    /* 교과과정 컨트롤 모바일 최적화 */
+    .courses-controls {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+    }
+
+    .btn-add,
+    .btn-edit-mode-courses {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    /* 블록 래퍼 모바일 최적화 */
+    .block-wrap {
+        min-height: 20px;
+        padding: 2px;
+    }
+
+    /* 셀 하이라이트 모바일 최적화 */
+    .cell-highlight {
+        border: 2px solid #4CAF50;
+        background-color: rgba(76, 175, 80, 0.1);
+    }
+
+    /* 드래그 프리뷰 모바일 최적화 */
+    .drag-preview-placeholder {
+        border: 2px dashed #2196f3;
+        background-color: rgba(33, 150, 243, 0.1);
+        min-height: 20px;
+        border-radius: 12px;
+    }
+
+    /* 모바일에서는 drag-preview-block 스타일 상속 */
+}
+
+/* 초소형 모바일 화면 최적화 */
+@media (max-width: 360px) {
+    .container {
+        padding: 3px;
+    }
+
+    h1 {
+        font-size: 1rem;
+    }
+
+    .main-header-content h1 {
+        font-size: 1rem;
+    }
+
+    .main-header-content img {
+        height: 16px;
+    }
+
+    .tab {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+
+    .btn {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+
+    .btn-sm {
+        padding: 3px 6px;
+        font-size: 9px;
+    }
+
+    table, .matrix-table, #coursesTable {
+        font-size: 9px;
+        min-width: 400px;
+    }
+
+    th, td {
+        padding: 3px 4px;
+        font-size: 8px;
+    }
+
+    .course-block {
+        font-size: 8px;
+        padding: 2px 4px;
+        min-height: 20px;
+    }
+
+    .course-block-title {
+        font-size: 8px;
+    }
+
+    .course-credits-text {
+        font-size: 7px;
+    }
+
+    .course-block-info {
+        font-size: 7px;
+    }
+
+    .course-description {
+        font-size: 6px;
+    }
+
+    .matrix-table th {
+        font-size: 8px;
+        padding: 2px 3px;
+    }
+
+    .matrix-table td {
+        font-size: 7px;
+        padding: 1px 2px;
+    }
+
+    .matrix-dot {
+        width: 5px;
+        height: 5px;
+    }
+
+    .matrix-mark {
+        font-size: 6px;
+        padding: 1px;
+    }
+
+    .curriculum-table {
+        font-size: 8px;
+    }
+
+    .curriculum-table th,
+    .curriculum-table td {
+        padding: 2px 3px;
+        font-size: 7px;
+    }
+
+    .common-values-table {
+        font-size: 8px;
+    }
+
+    .common-values-table th,
+    .common-values-table td {
+        padding: 2px 3px;
+        font-size: 7px;
+    }
+
+    .modal-content {
+        width: 99%;
+        margin: 2px auto;
+        padding: 8px;
+    }
+
+    .modal-header h2 {
+        font-size: 1rem;
+    }
+
+    .form-group label {
+        font-size: 10px;
+    }
+
+    .form-group input,
+    .form-group select {
+        font-size: 12px;
+        padding: 4px 6px;
+    }
+
+    .stat-card {
+        padding: 8px;
+    }
+
+    .stat-number {
+        font-size: 1.1rem;
+    }
+
+    .stat-label {
+        font-size: 10px;
+    }
+}
+
+/* 네트워크 그래프 노드(노드블럭)에 교과목 블럭 스타일 적용 */
+.vis-network .vis-node.box {
+    background: #f8f9fa !important;
+    border-radius: 12px !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 2px 6px !important;
+    font-size: 12px !important;
+    min-height: 32px !important;
+    max-width: 280px !important;
+    min-width: 150px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    position: relative !important;
+    z-index: 1 !important;
+    color: #495057 !important;
+    font-family: 'Noto Sans KR', sans-serif !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease !important;
+    cursor: grab !important;
+    user-select: none !important;
+}
+
+.vis-network .vis-node.box.selected {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+    border: 2px solid #000000 !important;
+}
+
+/* vis-network 기본 하이라이트 스타일 완전 오버라이드 */
+.vis-network .vis-node.hover,
+.vis-network .vis-node.vis-hover {
+    border-color: #e11111 !important;
+    border-width: 2px !important;
+    background-color: inherit !important;
+    color: inherit !important;
+}
+
+.vis-network .vis-node.vis-selected,
+.vis-network .vis-node.selected {
+    border-color: #237736 !important;
+    border-width: 2px !important;
+    background-color: inherit !important;
+    color: inherit !important;
+}
+
+.vis-network .vis-edge.hover,
+.vis-network .vis-edge.vis-hover {
+    stroke: #0d30be !important;
+    stroke-width: 2px !important;
+    color: #0d30be !important;
+}
+
+.vis-network .vis-edge.vis-selected,
+.vis-network .vis-edge.selected {
+    stroke: #0bb5af !important;
+    stroke-width: 2px !important;
+    color: #0bb5af !important;
+}
+
+/* vis-network 기본 스타일 제거 (배경색은 보존) */
+.vis-network .vis-node {
+    border-color: inherit !important;
+    color: inherit !important;
+}
+
+.vis-network .vis-edge {
+    stroke: inherit !important;
+    color: inherit !important;
+}
+
+/* vis-network 기본 스타일 재정의 (배경색 보존) */
+.vis-network .vis-node * {
+    border-color: inherit !important;
+    color: inherit !important;
+}
+
+/* vis-network 기본 스타일 무력화 (배경색은 보존) */
+.vis-network .vis-node,
+.vis-network .vis-node *,
+.vis-network .vis-edge,
+.vis-network .vis-edge * {
+    border: none !important;
+    color: inherit !important;
+    stroke: inherit !important;
+    fill: inherit !important;
+}
+
+/* vis-network 라이브러리의 모든 기본 스타일 오버라이드 */
+.vis-network .vis-manipulation,
+.vis-network .vis-edit-mode,
+.vis-network .vis-navigation,
+.vis-network .vis-button,
+.vis-network .vis-button:hover,
+.vis-network .vis-button:active {
+    border: none !important;
+    color: inherit !important;
+}
+
+/* vis-network의 모든 상태별 스타일 강제 적용 */
+.vis-network .vis-node.vis-hover,
+.vis-network .vis-node.vis-selected,
+.vis-network .vis-node.vis-dragCenter,
+.vis-network .vis-node.vis-dragLeft,
+.vis-network .vis-node.vis-dragRight {
+    border: 2px solid !important;
+    color: inherit !important;
+}
+
+.vis-network .vis-edge.vis-hover,
+.vis-network .vis-edge.vis-selected,
+.vis-network .vis-edge.vis-dragCenter,
+.vis-network .vis-edge.vis-dragLeft,
+.vis-network .vis-edge.vis-dragRight {
+    stroke-width: 2px !important;
+    color: inherit !important;
+}
+
+/* 체크박스 필터 드롭다운 스타일 */
+.checkbox-filter-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.filter-dropdown-btn {
+    background: white;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 4px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 120px;
+    transition: all 0.2s;
+}
+
+.filter-dropdown-btn:hover {
+    background: #f8f9fa;
+    border-color: #adb5bd;
+}
+
+.dropdown-arrow {
+    margin-left: auto;
+    font-size: 10px;
+    transition: transform 0.2s;
+}
+
+.filter-dropdown-content {
+    display: none;
+    position: absolute;
+    background: white;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 150px;
+    max-height: 300px;
+    overflow-y: auto;
+    top: 100%;
+    left: 0;
+    margin-top: 4px;
+}
+
+.filter-dropdown-content.show {
+    display: block;
+}
+
+.filter-checkbox-item {
+    display: block;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.filter-checkbox-item:hover {
+    background: #f8f9fa;
+}
+
+.filter-checkbox-item input[type="checkbox"] {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.filter-checkbox-item span {
+    cursor: pointer;
+    user-select: none;
+}
+
+/* 변경 상태 필터 스타일 */
+.change-status-filter {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.change-status-filter > label:first-child {
+    height: 20px !important;
+    line-height: 20px !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    margin-bottom: 4px !important;
+}
+
+.change-status-checkboxes {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.inline-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.inline-checkbox input[type="checkbox"] {
+    cursor: pointer;
+}
+
+.color-indicator {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* 드래그 인디케이터 스타일 */
+.drag-preview-indicator {
+    position: fixed;
+    height: 3px;
+    background: #2196f3;
+    width: 100%;
+    z-index: 10000;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 8px rgba(33, 150, 243, 0.6);
+    border-radius: 2px;
+}
+
+/* 드롭 애니메이션 */
+@keyframes dropAnimation {
+    0% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* 드래그 중 셀 고정 */
+.block-wrap.dragging-over {
+    min-height: inherit !important;
+    height: inherit !important;
+}
+
+/* =========================================================
+   v2.1 모바일 반응형 개선
+   - PC(>768px) 레이아웃은 변경 없음. 아래 규칙은 모두 ≤768px에만 적용.
+   - 인라인 style 로 지정된 요소가 있어 필요한 곳에만 !important 사용.
+   ========================================================= */
+@media (max-width: 768px) {
+    /* 컨트롤 바: 보기모드/색상기준 스위치를 라벨(위)+컨트롤(아래)로 스택 */
+    .view-mode-switch,
+    .color-mode-switch {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 6px !important;
+        width: 100% !important;
+        margin-right: 0 !important;
+        margin-bottom: 4px;
+    }
+    .view-mode-switch > span:first-child,
+    .color-mode-switch > span:first-child {
+        white-space: nowrap;
+        font-size: 12px;
+        font-weight: 600;
+        color: #555;
+        text-align: left;
+    }
+    /* 스위치 내부 버튼/드롭다운/토글 풀폭 정렬 */
+    .view-mode-switch .btn,
+    .color-mode-switch .btn,
+    .view-mode-switch select,
+    .color-mode-switch select,
+    .view-mode-switch .checkbox-filter-dropdown,
+    .color-mode-switch .checkbox-filter-dropdown,
+    .view-mode-switch .filter-dropdown-btn,
+    .color-mode-switch .filter-dropdown-btn {
+        width: 100% !important;
+    }
+
+    /* 변경 이력 플로팅 패널: 화면 밖으로 넘치지 않도록 하단 중앙 고정 */
+    #changeHistoryPanel {
+        top: auto !important;
+        bottom: 12px !important;
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+        width: 94vw !important;
+        min-width: 0 !important;
+        max-width: 94vw !important;
+        height: 58vh !important;
+        max-height: 70vh !important;
+        border-radius: 14px !important;
+    }
+    #changeHistoryPanelHeader {
+        cursor: default !important; /* 모바일에서는 드래그 대신 고정 배치 */
+    }
+
+    /* 색상 범례: 좁은 화면에서 줄바꿈 여백 정리 */
+    .color-legend {
+        justify-content: flex-start;
+        gap: 6px 10px;
+    }
+
+    /* 분석·통계: 차트 래퍼 풀폭 (차트 세로 스택은 기본 스타일에서 처리) */
+    .chart-wrapper {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+    /* 캔버스는 JS(drawChart)가 컨테이너 폭에 맞춰 크기를 계산하므로
+       가로 넘침만 방지하고 비율은 건드리지 않는다 */
+    .chart-wrapper canvas {
+        max-width: 100% !important;
+    }
+
+    /* 표는 가로 스크롤(기존 유지) — 스크롤 가능 힌트 */
+    .table-container {
+        scrollbar-width: thin;
+    }
+}
+
+/* 초소형 화면(≤400px) 미세 조정 */
+@media (max-width: 400px) {
+    .main-header-content h1 {
+        font-size: 1.15rem;
+    }
+    .version-info-line {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* =========================================================
+   v2.1 모바일: 넓은 표 가로 스크롤 + 첫 열·헤더 고정
+   - 이수모형 / 수행평가 매트릭스 / 공통가치대응 3개 표에 적용
+   - 컨테이너를 높이 제한 스크롤 박스로 만들어 그 안에서
+     헤더(top)와 식별 열(left)이 고정되도록 한다.
+   - 실제 sticky 지정 클래스(sticky-col/head/corner)는 JS가
+     rowspan/colspan을 계산해 올바른 셀에만 부여한다.
+   ========================================================= */
+@media (max-width: 768px) {
+    /* 실제 스크롤 박스(표의 직접 부모)는 JS가 높이 제한/overflow를 설정한다.
+       여기서는 부드러운 스크롤과 스크롤바만 지정 */
+    #matrix .table-container,
+    #curriculum .table-container,
+    #commonValues .table-container {
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+    }
+
+    /* 본문 식별 열 고정 (가로 스크롤 시 좌측 유지) */
+    #matrix .matrix-table td.sticky-col,
+    #curriculum .curriculum-table td.sticky-col,
+    #commonValues .common-values-table td.sticky-col {
+        position: sticky;
+        left: 0;
+        z-index: 3;
+        box-shadow: 1px 0 0 rgba(0, 0, 0, 0.14);
+    }
+    /* 헤더 행 고정 (세로 스크롤 시 상단 유지) */
+    #matrix .matrix-table th.sticky-head,
+    #curriculum .curriculum-table th.sticky-head,
+    #commonValues .common-values-table th.sticky-head {
+        position: sticky;
+        z-index: 6;
+    }
+    /* 헤더 × 식별 열 교차 지점(모서리)은 가장 위로 */
+    #matrix .matrix-table th.sticky-corner,
+    #curriculum .curriculum-table th.sticky-corner,
+    #commonValues .common-values-table th.sticky-corner {
+        z-index: 8;
+        box-shadow: 1px 0 0 rgba(0, 0, 0, 0.14);
+    }
+    /* 스크롤 가능 힌트: 컨테이너 우측 미세 그라데이션 */
+    #matrix .table-container,
+    #curriculum .table-container,
+    #commonValues .table-container {
+        scrollbar-width: thin;
+    }
+}
+
+/* =========================================================
+   v2.1 모바일: 표 글씨 크기 일관화
+   - 좁은 화면에 욱여넣으려 표 글씨를 8~11px로 축소해 두었으나,
+     이제 가로 스크롤·열 고정이 있어 축소가 불필요하다.
+   - 표 본문/블록 글씨를 UI(약 14px)와 일관된 크기로 통일한다.
+   - 이 블록이 앞선 ≤768/≤480 규칙보다 뒤에 있어 우선 적용된다.
+   ========================================================= */
+@media (max-width: 768px) {
+    /* 모든 표 본문 글씨 통일 */
+    table,
+    .matrix-table,
+    #coursesTable,
+    .curriculum-table,
+    .common-values-table {
+        font-size: 14px;
+    }
+    th, td {
+        font-size: 14px;
+    }
+    /* 매트릭스는 셀 고정 크기를 풀고 표의 글자크기(A-/A+ 조절, 기본 14px)를 따르게 함 */
+    .matrix-table th,
+    .matrix-table td {
+        font-size: inherit;
+    }
+    /* 이수모형 교과목 블록: 제목은 본문과 동일, 보조 정보만 한 단계 작게 */
+    .course-block,
+    .course-block-title {
+        font-size: 14px;
+    }
+    .course-block-info,
+    .course-credits-text,
+    .course-description {
+        font-size: 12px;
+    }
+    /* 매트릭스 표식/점도 균형 있게 */
+    .matrix-mark {
+        font-size: 13px;
+    }
+    .matrix-dot {
+        width: 10px;
+        height: 10px;
+    }
+    /* 색상 범례 라벨도 너무 작지 않게 */
+    .color-legend-label {
+        font-size: 13px;
+    }
+}
+
+/* =========================================================
+   v2.1 모바일 UI 다듬기 (타이포 위계 · 컴팩트 탭/버튼 · 여백)
+   - 모바일 전용(≤768px). PC 레이아웃은 변경하지 않는다.
+   - 이 블록이 가장 뒤에 있어 앞선 모바일 규칙보다 우선 적용된다.
+   ========================================================= */
+@media (max-width: 768px) {
+    .container { padding: 12px 12px 28px; }
+
+    /* ---- 헤더: 컴팩트 + 위계 ---- */
+    .main-header-content { gap: 8px; }
+    .main-header-content h1 {
+        font-size: 17px !important;
+        font-weight: 700;
+        letter-spacing: -0.2px;
+        margin-bottom: 6px !important;
+    }
+    .main-header-content img { height: 22px; }
+    .version-info-line { font-size: 11px; padding: 3px 9px; }
+    .version-buttons-line { gap: 6px; }
+    .version-buttons-line .btn-sm { padding: 5px 11px; font-size: 11px; }
+
+    /* ---- 탭: 컴팩트 알약(pill), 줄바꿈, 활성 강조 ---- */
+    .tabs {
+        flex-direction: row !important;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+        margin-bottom: 14px;
+    }
+    .tab {
+        flex: 0 0 auto;
+        width: auto !important;
+        min-width: 0 !important;
+        padding: 7px 15px !important;
+        font-size: 12.5px !important;
+        font-weight: 600;
+        border-radius: 999px !important;
+        background: #eef1f6;
+        color: #5b6577;
+        border: 1px solid transparent;
+        box-shadow: none;
+    }
+    .tab.active {
+        background: #2c3e50;
+        color: #ffffff;
+        border-color: #2c3e50;
+    }
+
+    /* ---- 섹션 라벨을 작은 회색 캡션으로 (위계) ---- */
+    .view-mode-switch > span:first-child,
+    .color-mode-switch > span:first-child {
+        font-size: 10.5px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.4px;
+        color: #99a2b2 !important;
+        white-space: nowrap;
+    }
+
+    /* ---- 컨트롤 영역: 섹션은 줄 유지, 버튼은 컴팩트하게 한 행으로 ---- */
+    .matrix-controls,
+    .courses-controls {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        align-items: center !important;
+        gap: 8px !important;
+        justify-content: flex-start !important;
+        margin-bottom: 12px;
+    }
+    .matrix-controls > .color-mode-switch,
+    .matrix-controls > .view-mode-switch,
+    .matrix-controls > .font-size-controls {
+        flex: 1 1 100%;
+    }
+    .matrix-controls > .btn,
+    .courses-controls > .btn {
+        flex: 0 0 auto;
+        width: auto !important;
+        margin-bottom: 0 !important;
+        padding: 8px 14px !important;
+        font-size: 12.5px !important;
+        font-weight: 600;
+        border-radius: 8px;
+    }
+
+    /* 스위치: 라벨 + 컨트롤을 한 줄에 컴팩트하게 */
+    .view-mode-switch,
+    .color-mode-switch {
+        flex-direction: row !important;
+        align-items: center !important;
+        flex-wrap: wrap;
+        gap: 8px !important;
+        width: 100% !important;
+        margin-right: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    .view-mode-switch .btn,
+    .color-mode-switch .btn {
+        width: auto !important;
+        padding: 7px 12px !important;
+        font-size: 12.5px !important;
+    }
+
+    /* 폰트 크기 조절: 컴팩트 인라인 */
+    .font-size-controls {
+        width: auto !important;
+        gap: 6px;
+        padding: 3px 6px;
+    }
+    .font-size-controls .btn-sm {
+        padding: 5px 11px;
+        font-size: 12px;
+        min-width: 34px;
+    }
+    .font-size-display { font-size: 12px; }
+
+    /* 색상 범례: 촘촘하게 */
+    .color-legend { gap: 6px 12px; }
+}
+
+/* =========================================================
+   v2.1 모바일 표 뷰어 모드
+   - 스크롤을 내리면 표가 화면을 가득 채우도록 탭바를 상단 고정.
+   - 표 글씨는 조망용으로 작게(핀치줌으로 확대해 읽음).
+   - 표 스크롤 박스 높이는 JS가 창 높이에 맞춰 지정한다.
+   ========================================================= */
+@media (max-width: 768px) {
+    /* 가로 넘침은 clip으로 잘라 페이지 폭을 화면에 고정하고(버튼·필터가 폭을 넘지 않게),
+       세로는 visible로 두어 상단 sticky 탭바가 정상 동작하게 한다.
+       (clip은 hidden과 달리 스크롤 컨테이너를 만들지 않아 sticky를 깨지 않음) */
+    .container {
+        overflow-x: clip !important;
+        overflow-y: visible !important;
+        max-width: 100%;
+    }
+
+    /* 상단 고정 탭바: 스크롤을 내려도 탭 접근 가능 + 표가 그 아래를 채움 */
+    .tabs {
+        position: sticky;
+        top: 0;
+        z-index: 60;
+        margin-bottom: 10px;
+        padding: 8px 4px 8px;
+        background: rgba(245, 247, 250, 0.97);
+        -webkit-backdrop-filter: saturate(180%) blur(8px);
+        backdrop-filter: saturate(180%) blur(8px);
+        border-bottom: 1px solid #e4e8ef;
+    }
+
+    /* 표 글씨: 지도 뷰어의 1:1(원본) 크기에서 읽기 좋은 크기.
+       전체 조망은 지도 뷰어가 축소해서 보여주고, 확대하면 이 크기로 보인다. */
+    table,
+    .matrix-table,
+    #coursesTable,
+    .curriculum-table,
+    .common-values-table {
+        font-size: 13px !important;
+    }
+    th, td { font-size: 13px !important; }
+    .matrix-table th,
+    .matrix-table td { font-size: 13px !important; }
+    .course-block,
+    .course-block-title { font-size: 13px !important; }
+    .course-block-info,
+    .course-credits-text,
+    .course-description { font-size: 11px !important; }
+    .matrix-mark { font-size: 12px !important; }
+
+    /* 지도 뷰어 확대/축소/맞춤 오버레이 버튼 */
+    .map-ctrls {
+        position: absolute;
+        right: 10px;
+        bottom: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        z-index: 20;
+    }
+    .map-ctrls button {
+        width: 38px;
+        height: 38px;
+        padding: 0;
+        border: 0.5px solid #cfd6e0;
+        border-radius: 9px;
+        background: rgba(255, 255, 255, 0.96);
+        color: #2c3e50;
+        font-size: 18px;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.14);
+    }
+    .map-ctrls button:active { background: #eef1f6; }
+}
+
+/* =========================================================
+   v2.1 모바일: 표 위 제목·설명·버튼 축소 (공간 절약)
+   ========================================================= */
+@media (max-width: 768px) {
+    /* 표 제목줄: 제목 + 긴 설명을 세로로 쌓고 작게 */
+    .matrix-header-bar {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 2px !important;
+        margin-bottom: 6px !important;
+    }
+    .matrix-header-bar h3 {
+        font-size: 14px !important;
+        font-weight: 500 !important;
+        min-height: 0 !important;
+        margin: 0 0 0 2px !important;
+        line-height: 1.3 !important;
+    }
+    .matrix-header-bar span {
+        font-size: 11px !important;
+        color: #8a94a6 !important;
+        line-height: 1.35 !important;
+        font-weight: 400 !important;
+    }
+    .matrix-header-bar > div { align-items: flex-start !important; }
+
+    /* 컨트롤 버튼 더 작게(탭 타깃은 유지) */
+    .matrix-controls > .btn,
+    .courses-controls > .btn {
+        padding: 6px 11px !important;
+        font-size: 12px !important;
+    }
+    .view-mode-switch .btn,
+    .color-mode-switch .btn {
+        padding: 6px 10px !important;
+        font-size: 12px !important;
+    }
+    /* 탭 알약도 살짝 축소 */
+    .tab {
+        padding: 6px 13px !important;
+        font-size: 12px !important;
+    }
+}
+
+/* =========================================================
+   v2.1 모바일: 지도 뷰어로 대체되어 불필요한 컨트롤 숨김
+   - 글씨크기 조절(A-/A+): 핀치줌으로 대체
+   - 전체 화면: 지도 뷰어가 이미 화면을 채움
+   - 이미지 내보내기 / 편집모드: 데스크톱에서 수행
+   ========================================================= */
+@media (max-width: 768px) {
+    .matrix-controls .font-size-controls,
+    .matrix-controls > .btn-primary,
+    .matrix-controls > .btn-secondary,
+    .matrix-controls .btn-edit-mode-matrix,
+    .matrix-controls .btn-edit-mode-curriculum,
+    .matrix-controls .btn-edit-mode-commonValues {
+        display: none !important;
+    }
+}
+
+/* =========================================================
+   v2.1 모바일: 필터 영역이 화면 폭을 넘지 않게 (줄바꿈 정리)
+   - 필터 라벨은 위, 체크박스는 아래 전체폭으로 줄바꿈.
+   ========================================================= */
+@media (max-width: 768px) {
+    .matrix-filters {
+        width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 10px 12px !important;
+        justify-content: flex-start !important;
+        flex: none !important;
+    }
+    .filter-section {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 6px !important;
+        width: 100% !important;
+    }
+    .filter-label {
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        color: #99a2b2 !important;
+    }
+    .checkbox-group {
+        width: 100% !important;
+        flex-wrap: wrap !important;
+        gap: 6px !important;
+    }
+    .modern-checkbox {
+        font-size: 12px !important;
+        padding: 5px 9px !important;
+    }
+    .btn-reset {
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 교과목 관리 탭 표는 지도 뷰어가 아닌 목록형이라 더 작게(컴팩트) */
+    #courses table,
+    #courses th,
+    #courses td {
+        font-size: 11px !important;
+    }
+}
+
+/* =========================================================
+   v2.1 모바일: 상단 영역(헤더·버전·탭)·필터·버튼 컴팩트화
+   - 메뉴들이 세로 공간을 많이 차지해 전반적으로 밀도를 높인다.
+   ========================================================= */
+@media (max-width: 768px) {
+    /* --- 헤더/버전 --- */
+    .container { padding-top: 8px !important; }
+    .header-section { margin-bottom: 8px !important; }
+    .main-header-content { gap: 5px !important; }
+    .main-header-content h1 { font-size: 15px !important; margin-bottom: 3px !important; }
+    .main-header-content img { height: 18px !important; }
+    .version-controls { gap: 5px !important; }
+    .version-info-line { padding: 2px 8px !important; font-size: 10px !important; }
+    .version-buttons-line { gap: 5px !important; }
+    .version-buttons-line .btn-sm { padding: 4px 9px !important; font-size: 10px !important; }
+
+    /* --- 탭 --- */
+    .tabs { padding: 6px 4px !important; margin-bottom: 8px !important; gap: 5px !important; }
+    .tab { padding: 5px 11px !important; font-size: 11.5px !important; }
+
+    /* --- 매트릭스 필터 --- */
+    .matrix-filters { padding: 8px 10px !important; gap: 8px !important; }
+    .filter-section { gap: 4px !important; }
+    .filter-label { font-size: 10px !important; }
+    .checkbox-group { gap: 5px !important; }
+    .modern-checkbox { padding: 3px 7px !important; font-size: 11px !important; gap: 4px !important; }
+    .modern-checkbox .checkmark { transform: scale(0.85); }
+    .btn-reset { padding: 6px !important; font-size: 11px !important; }
+    .view-mode-switch { margin-bottom: 0 !important; }
+    .view-mode-switch .btn { padding: 5px 10px !important; font-size: 11px !important; }
+
+    /* --- 교과목 필터: 드롭다운을 2열 그리드로 --- */
+    #courses .filters {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 8px 10px !important;
+    }
+    #courses .filters .filter-group { width: auto !important; min-width: 0 !important; }
+    #courses .filters .filter-group:nth-child(5),
+    #courses .filters .filter-group:nth-child(6),
+    #courses .filters .change-status-filter { grid-column: 1 / -1 !important; }
+    #courses .change-status-checkboxes { gap: 6px !important; }
+    #courses .inline-checkbox { padding: 4px 9px !important; font-size: 11px !important; }
+    #courses .filters .filter-group > label:first-child {
+        font-size: 10px !important;
+        margin-bottom: 2px !important;
+        height: auto !important;
+        line-height: 1.2 !important;
+        color: #99a2b2 !important;
+    }
+    #courses .filters .filter-dropdown-btn,
+    #courses .filters input,
+    #courses .filters select {
+        padding: 6px 9px !important;
+        font-size: 12px !important;
+        min-height: 0 !important;
+    }
+
+    /* --- 교과목 상단 버튼(추가·편집모드) --- */
+    .courses-controls { gap: 6px !important; margin-bottom: 8px !important; }
+    .courses-controls > .btn { padding: 6px 12px !important; font-size: 12px !important; }
+
+    /* --- 수행평가 매트릭스 필터: 라벨(왼쪽)+체크박스(오른쪽) 인라인으로 압축 --- */
+    .matrix-filters { gap: 6px !important; }
+    .matrix-filters .filter-section {
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        flex-wrap: nowrap !important;
+        gap: 5px 8px !important;
+        width: 100% !important;
+    }
+    .matrix-filters .filter-label {
+        white-space: nowrap !important;
+        min-width: 50px !important;
+        margin: 0 !important;
+        padding-top: 6px !important;
+        flex: 0 0 auto !important;
+    }
+    /* 체크박스 그룹만 내부에서 줄바꿈(라벨은 왼쪽 유지) */
+    .matrix-filters .checkbox-group {
+        flex: 1 1 0 !important;
+        min-width: 0 !important;
+        flex-wrap: wrap !important;
+    }
+}
+
+/* =========================================================
+   v2.1 모바일: 헤더 한 줄 정리 + 교과목 버튼을 필터 카드로 통합
+   ========================================================= */
+@media (max-width: 768px) {
+    /* body 밖으로 삐져나가는 요소까지 루트에서 가로 클립 */
+    html, body { overflow-x: clip !important; }
+    /* 호버 툴팁은 모바일(터치)에서 불필요하고 페이지 폭을 넘겨 가로 스크롤을 유발하므로 숨김 */
+    .custom-course-tooltip { display: none !important; }
+
+    /* 로고 + 제목을 한 줄에 나란히 */
+    .main-header-content {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        align-items: center !important;
+        column-gap: 8px !important;
+        row-gap: 6px !important;
+    }
+    .main-header-content > a { flex: 0 0 auto !important; line-height: 0 !important; }
+    .main-header-content img { height: 16px !important; }
+    .main-header-content h1 {
+        flex: 0 0 auto !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        font-size: 14px !important;
+    }
+    .main-header-content .version-controls { flex-basis: 100% !important; }
+
+    /* 버전 표시 + 버전 버튼들을 한 줄에 (좁은 화면에 맞게 작게) */
+    .version-controls {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 5px !important;
+    }
+    .version-info-line { font-size: 8.5px !important; padding: 3px 6px !important; gap: 2px !important; white-space: nowrap !important; flex-wrap: nowrap !important; }
+    .version-buttons-line { gap: 3px !important; flex-wrap: nowrap !important; }
+    .version-buttons-line .btn-sm { padding: 3px 5px !important; font-size: 9px !important; white-space: nowrap !important; }
+    .current-version-display { white-space: nowrap !important; }
+
+    /* 교과목 추가 / 일반모드 버튼: 필터 카드 '아래'로 이동 (JS가 .filters 카드 안 마지막으로) */
+    #courses .filters > .courses-controls {
+        grid-column: 1 / -1 !important;
+        display: flex !important;
+        gap: 8px !important;
+        margin: 8px 0 0 0 !important;
+        padding: 8px 0 0 0 !important;
+        border-top: 0.5px solid #e4e8ef !important;
+        background: transparent !important;
+    }
+    #courses .courses-controls > .btn {
+        padding: 5px 12px !important;
+        font-size: 11.5px !important;
+        border-radius: 7px !important;
+        height: auto !important;
+        min-height: 0 !important;
+    }
+}
+
+/* =========================================================
+   v2.1 모바일: 버전/필터/체크박스/드롭다운 추가 정리 (사용자 피드백)
+   ========================================================= */
+@media (max-width: 768px) {
+    /* [버전] '버전 :' 라벨 제거 → 날짜 + 버튼만 한 줄에 여유 있게 */
+    .version-info { display: none !important; }
+    .version-info-line { padding: 2px 5px !important; }
+
+    /* [보기 모드] 라벨 제거 (버튼은 JS가 필터초기화 옆으로 이동) */
+    .view-mode-switch > span:first-child { display: none !important; }
+
+    /* [변경 상태] 체크박스 4개를 한 줄에 컴팩트하게 + 색상점/라벨 정렬 */
+    .matrix-filters .checkbox-group,
+    #courses .change-status-checkboxes {
+        flex-wrap: nowrap !important;
+        gap: 5px !important;
+        align-items: center !important;
+    }
+    .matrix-filters .modern-checkbox,
+    #courses .inline-checkbox {
+        padding: 2px 6px !important;
+        font-size: 10px !important;
+        gap: 4px !important;
+        white-space: nowrap !important;
+    }
+    .matrix-filters .modern-checkbox .checkmark { transform: scale(0.8); }
+    .color-indicator, .change-status-checkboxes .status-dot {
+        width: 9px !important; height: 9px !important; flex: 0 0 auto !important; margin: 0 !important;
+    }
+    .label-text { font-size: 10px !important; }
+
+    /* [드롭다운] 좁고 컴팩트하게 + ▼를 글자 가까이 */
+    #courses .filters .filter-dropdown-btn {
+        width: fit-content !important;
+        min-width: 92px !important;
+        max-width: 100% !important;
+        justify-content: flex-start !important;
+        gap: 6px !important;
+        padding: 6px 10px !important;
+    }
+    #courses .filters .dropdown-arrow { margin-left: 4px !important; }
+}
+
+/* v2.1 모바일: 필터 초기화 + 변경사항 표시 한 줄 배치 */
+@media (max-width: 768px) {
+    .reset-vm-row {
+        display: flex !important;
+        gap: 8px !important;
+        width: 100% !important;
+        margin-top: 4px !important;
+        align-items: stretch !important;
+    }
+    .reset-vm-row > .btn-reset {
+        flex: 1 1 0 !important;
+        width: auto !important;
+        margin: 0 !important;
+    }
+    .reset-vm-row > .view-mode-switch {
+        flex: 1 1 0 !important;
+        width: auto !important;
+        margin: 0 !important;
+        flex-direction: row !important;
+    }
+    .reset-vm-row .view-mode-switch .btn { width: 100% !important; }
+}
+
+/* =========================================================
+   v2.1 모바일: 교과목 필터 3열 배치
+   행1) 학년·학기·과목분류  행2) 구분·일반모드·검색  행3) 변경상태(전체폭)
+   ========================================================= */
+@media (max-width: 768px) {
+    #courses .filters {
+        grid-template-columns: repeat(3, 1fr) !important;
+        padding: 12px !important;
+        gap: 8px !important;
+    }
+    /* 이전 검색/변경상태 nth-child 전체폭 규칙 해제 (변경상태는 클래스로 유지) */
+    #courses .filters .filter-group:nth-child(5),
+    #courses .filters .filter-group:nth-child(6) { grid-column: auto !important; }
+    #courses .filters .change-status-filter { grid-column: 1 / -1 !important; }
+
+    /* 각 셀 컨트롤이 셀 폭을 채우도록 (정렬 통일) */
+    #courses .filters .filter-dropdown-btn { width: 100% !important; min-width: 0 !important; }
+    #courses .filters .filter-group input { width: 100% !important; box-sizing: border-box !important; }
+    #courses .filters .filter-group > label:first-child { font-size: 10px !important; }
+
+    /* 일반모드 버튼을 그리드 셀에 맞춰 하단 정렬 */
+    #courses .filters > .btn-edit-mode-courses {
+        align-self: end !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 6px 8px !important;
+        font-size: 11.5px !important;
+        height: 34px !important;
+        border-radius: 7px !important;
+    }
+}
+
+/* =========================================================
+   v2.1 모바일: 탭 5개를 1줄로 (줄바꿈 대신 한 줄, 넘치면 가로 스크롤)
+   ========================================================= */
+@media (max-width: 768px) {
+    .tabs {
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        justify-content: flex-start !important;
+        gap: 3px !important;
+        padding-left: 2px !important;
+        padding-right: 2px !important;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab {
+        flex: 0 0 auto !important;
+        white-space: nowrap !important;
+        padding: 4px 5px !important;
+        font-size: 10px !important;
+    }
+}
+
+/* =========================================================
+   v2.1 모바일: 탭별 필터 영역 스타일을 '수행평가 매트릭스' 기준으로 통일
+   ========================================================= */
+@media (max-width: 768px) {
+    /* 교과목 필터 카드 → 매트릭스 카드와 동일 (회색 배경/8px radius/그림자/여백) */
+    #courses .filters {
+        background: #f8f9fa !important;
+        border-radius: 8px !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+        padding: 8px 10px !important;
+        gap: 6px !important;
+    }
+    /* 라벨 굵기 통일 (700) */
+    #courses .filters .filter-group > label:first-child { font-weight: 700 !important; }
+
+    /* 변경 상태 체크박스 → 매트릭스의 흰 사각(테두리 6px) 스타일로 통일 */
+    #courses .change-status-checkboxes .inline-checkbox,
+    #courses .change-status-checkboxes .inline-checkbox.checked {
+        background: #fff !important;
+        border: 0.5px solid #dee2e6 !important;
+        border-radius: 6px !important;
+        padding: 2px 6px !important;
+        gap: 4px !important;
+        font-size: 10px !important;
+    }
+    /* 색상 점 크기 통일 (9px) */
+    #courses .change-status-checkboxes .inline-checkbox .color-indicator { width: 9px !important; height: 9px !important; }
+}
+
+/* =========================================================
+   v2.1 모바일: 이수모형/공통가치 컨트롤도 매트릭스 필터 기준으로 통일
+   (범례 라벨 10px, 색상박스 10px, '색상 기준:' 캡션 10px, 토글 축소)
+   ========================================================= */
+@media (max-width: 768px) {
+    /* 색상 범례: 라벨·박스 크기 통일 */
+    .color-legend { gap: 4px 8px !important; }
+    .color-legend-label {
+        font-size: 10px !important;
+        font-weight: 700 !important;
+        color: #99a2b2 !important;
+    }
+    .color-legend-box {
+        width: 10px !important;
+        height: 10px !important;
+    }
+    /* '색상 기준:' / '보기 모드:' 등 캡션 통일 (첫 자식이 아니어도 적용) */
+    .color-mode-switch > span,
+    .view-mode-switch > span {
+        font-size: 10px !important;
+        font-weight: 700 !important;
+        color: #99a2b2 !important;
+    }
+    /* 분야/유형 토글 스위치 축소 */
+    [class*="toggle-switch"] {
+        transform: scale(0.72);
+        transform-origin: left center;
+    }
+    /* 컨트롤 버튼(변경사항 표시 등) 크기 통일 */
+    .view-mode-switch .btn,
+    .color-mode-switch .btn {
+        font-size: 11px !important;
+        padding: 6px 10px !important;
+        height: 28px !important;
+    }
+}
+
+/* =========================================================
+   v2.1 모바일: 범례 전체폭 + 색상기준 아랫줄 / 필터초기화 숨김 /
+   변경사항 토글화 / 교과목 필터 축소
+   ========================================================= */
+@media (max-width: 768px) {
+    /* 색상 범례: 전체 폭 사용, '색상 기준:'+토글은 아랫줄 */
+    .color-mode-switch { flex-wrap: wrap !important; row-gap: 6px !important; }
+    .color-mode-switch .color-legend {
+        flex: 1 1 100% !important;
+        width: 100% !important;
+        margin-right: 0 !important;
+        justify-content: space-between !important;
+    }
+
+    /* 매트릭스: 필터 초기화 버튼 숨김 */
+    .matrix-filters .btn-reset { display: none !important; }
+    .reset-vm-row { margin-top: 2px !important; }
+
+    /* 변경사항 표시: 버튼 숨기고 JS가 만든 토글 표시 */
+    .view-mode-switch > .btn { display: none !important; }
+    .vm-toggle {
+        position: relative;
+        width: 96px; height: 24px;
+        background: #e9ecef;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        flex: 0 0 auto;
+    }
+    .vm-toggle .vm-slider {
+        position: absolute; top: 2px; left: 2px;
+        width: 20px; height: 20px;
+        background: #6c757d; border-radius: 50%;
+        transition: all 0.3s ease;
+    }
+    .vm-toggle.on { background: #cfe3f8; }
+    .vm-toggle.on .vm-slider { left: 74px; background: #4a90e2; }
+    .vm-toggle .vm-text {
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 10px; font-weight: 700; color: #666;
+        pointer-events: none; white-space: nowrap;
+    }
+
+    /* 교과목 필터: 더 컴팩트 (카드·라벨·컨트롤 축소) */
+    #courses .filters { padding: 6px 8px !important; gap: 5px !important; }
+    #courses .filters .filter-group > label:first-child { font-size: 9px !important; margin-bottom: 1px !important; }
+    #courses .filters .filter-dropdown-btn,
+    #courses .filters input,
+    #courses .filters select {
+        padding: 4px 7px !important;
+        font-size: 11px !important;
+        border-radius: 6px !important;
+    }
+    #courses .filters > .btn-edit-mode-courses {
+        height: 27px !important;
+        font-size: 10.5px !important;
+        padding: 4px 6px !important;
+    }
+    #courses .change-status-checkboxes .inline-checkbox { font-size: 9.5px !important; padding: 2px 5px !important; }
+}
+
+/* =========================================================
+   v2.1 모바일: 변경표시 토글 = 분야 토글과 동일 규격·같은 줄 /
+   교과목 일반모드 숨김 / 교과목 필터 7pt(9px)
+   ========================================================= */
+@media (max-width: 768px) {
+    /* 변경표시 토글: 분야 토글(80x32, scale 0.72)과 동일 규격 */
+    .vm-toggle {
+        width: 80px !important;
+        height: 32px !important;
+        border-radius: 16px !important;
+        transform: scale(0.72);
+        transform-origin: left center;
+    }
+    .vm-toggle .vm-slider {
+        width: 26px !important; height: 26px !important;
+        top: 3px !important; left: 3px !important;
+    }
+    .vm-toggle.on .vm-slider { left: 51px !important; }
+    .vm-toggle .vm-text { font-size: 12px !important; }
+
+    /* 색상기준 줄: 캡션+분야토글+변경표시토글 나란히 */
+    .color-mode-switch .view-mode-switch {
+        flex: 0 0 auto !important;
+        width: auto !important;
+        margin: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    /* 교과목 관리: 일반모드 버튼 숨김 */
+    #courses .btn-edit-mode-courses { display: none !important; }
+
+    /* 교과목 필터: 7pt(≈9px) 통일 — 라벨·컨트롤·드롭다운 내부까지 */
+    #courses .filters { padding: 5px 7px !important; gap: 4px !important; }
+    #courses .filters .filter-group > label:first-child { font-size: 9px !important; }
+    #courses .filters .filter-dropdown-btn,
+    #courses .filters input,
+    #courses .filters select {
+        font-size: 9px !important;
+        padding: 3px 6px !important;
+        min-height: 0 !important;
+    }
+    #courses .filters .dropdown-arrow { font-size: 8px !important; }
+    #courses .filter-dropdown-content,
+    #courses .filter-dropdown-content label,
+    #courses .filter-checkbox-item,
+    #courses .filter-checkbox-item span {
+        font-size: 9px !important;
+    }
+    #courses .filter-checkbox-item { padding: 3px 6px !important; }
+    #courses .filters .filter-group > label:first-child { color: #99a2b2 !important; }
+    #courses .change-status-checkboxes .inline-checkbox { font-size: 9px !important; padding: 2px 5px !important; }
+    #courses .change-status-checkboxes .label-text { font-size: 9px !important; }
+}
+
+/* 변경 상태: 전체폭 (nth-child auto 규칙보다 특이도 높임) */
+@media (max-width: 768px) {
+    #courses .filters .filter-group.change-status-filter {
+        grid-column: 1 / -1 !important;
+    }
+}
+
+/* =========================================================
+   v2.1 모바일: 교과목 필터 최종 압축 (라벨을 왼쪽 인라인으로)
+   ========================================================= */
+@media (max-width: 768px) {
+    #courses .filters { padding: 5px 7px !important; gap: 3px 6px !important; }
+    #courses .filters .filter-group {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 3px !important;
+        min-height: 0 !important;
+    }
+    #courses .filters .filter-group > label:first-child {
+        margin: 0 !important;
+        flex: 0 0 auto !important;
+        white-space: nowrap !important;
+    }
+    #courses .filters .filter-group .checkbox-filter-dropdown,
+    #courses .filters .filter-group input { flex: 1 1 0 !important; min-width: 0 !important; }
+    #courses .filters .filter-dropdown-btn,
+    #courses .filters input {
+        padding: 2px 5px !important;
+        height: 20px !important;
+        line-height: 1.1 !important;
+    }
+    #courses .change-status-checkboxes { flex: 1 1 0 !important; gap: 4px !important; }
+    #courses .change-status-checkboxes .inline-checkbox { padding: 1px 4px !important; }
+}
+
+/* 드롭다운 선택 텍스트가 길어도 한 줄 말줄임 */
+@media (max-width: 768px) {
+    #courses .filter-dropdown-btn { overflow: hidden !important; }
+    #courses .filter-dropdown-btn > span:first-child {
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        display: block !important;
+        max-width: 100% !important;
+    }
+}
+
+/* 선택기 내부 텍스트(span)까지 7pt로 — 별도 규칙(13px)이 이기고 있어 명시 */
+@media (max-width: 768px) {
+    #courses .filter-dropdown-btn span,
+    #courses .filter-dropdown-btn .dropdown-arrow {
+        font-size: 9px !important;
+    }
+}
+
+/* 선택지(드롭다운 목록) 내부 체크박스·항목 축소 */
+@media (max-width: 768px) {
+    #courses .filter-checkbox-item input[type="checkbox"] {
+        width: 12px !important;
+        height: 12px !important;
+        min-width: 12px !important;
+        flex: 0 0 12px !important;
+        margin: 0 4px 0 0 !important;
+    }
+    #courses .filter-checkbox-item {
+        padding: 2px 6px !important;
+        min-height: 0 !important;
+        gap: 4px !important;
+        line-height: 1.3 !important;
+    }
+    #courses .filter-dropdown-content { min-width: 0 !important; }
+}
+
+/* =========================================================
+   v2.1 모바일: 색상기준·변경표시 토글을 표 위(컨트롤 아래) 오른쪽 정렬
+   ========================================================= */
+@media (max-width: 768px) {
+    .toggles-row {
+        display: flex !important;
+        justify-content: flex-end !important;
+        align-items: center !important;
+        gap: 4px !important;
+        margin: 2px 0 4px !important;
+        width: 100% !important;
+    }
+    .toggles-row > span {
+        font-size: 10px !important;
+        font-weight: 700 !important;
+        color: #99a2b2 !important;
+        white-space: nowrap !important;
+    }
+    /* scale(0.72)로 줄어든 만큼의 잔여 레이아웃 폭 제거 → 간격을 실제로 좁게 */
+    .toggles-row [class*="toggle-switch"],
+    .toggles-row .vm-toggle {
+        margin-right: -22px !important;
+    }
+    .toggles-row > :last-child { margin-right: 0 !important; }
+    .toggles-row .vm-toggle { margin-left: 0 !important; }
+    .toggles-row .view-mode-switch { flex: 0 0 auto !important; width: auto !important; margin: 0 !important; }
+    /* 마지막 vm-toggle 의 잔여폭은 origin right 로 제거 */
+    .toggles-row .view-mode-switch .vm-toggle {
+        transform-origin: right center !important;
+        margin-right: 0 !important;
+        margin-left: -22px !important;
+    }
+}
+
+/* =========================================================
+   v2.1 모바일: 변경상태 한 줄 안전화 + 지도 뷰포트 내 제목줄
+   ========================================================= */
+@media (max-width: 768px) {
+    /* 변경상태 체크박스: 좁은 기기(360px)에서도 넘치지 않게 더 촘촘히,
+       그래도 모자라면 줄바꿈(넘침 방지가 우선) */
+    .matrix-filters .filter-section .checkbox-group,
+    #courses .change-status-checkboxes {
+        flex-wrap: wrap !important;
+        gap: 3px !important;
+    }
+    .matrix-filters .modern-checkbox,
+    #courses .change-status-checkboxes .inline-checkbox {
+        padding: 1px 4px !important;
+        gap: 3px !important;
+    }
+    .matrix-filters .modern-checkbox .checkmark { transform: scale(0.7); margin: 0 !important; }
+    #courses .change-status-checkboxes input[type="checkbox"] {
+        width: 11px !important; height: 11px !important; min-width: 11px !important; margin: 0 !important;
+    }
+    .color-indicator { width: 8px !important; height: 8px !important; }
+
+    /* 지도 뷰포트 상단에 남는 표 제목줄: 컴팩트하게(제목은 14px 유지) */
+    [data-map-on] > .matrix-header-bar,
+    .matrix-header-bar {
+        margin-bottom: 2px !important;
+    }
+}
+
+/* 매트릭스: 변경표시 토글을 학년 줄 오른쪽 끝에 붙임 */
+@media (max-width: 768px) {
+    .matrix-filters .filter-section > .view-mode-switch {
+        margin-left: auto !important;
+        flex: 0 0 auto !important;
+        width: auto !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+    .matrix-filters .filter-section .vm-toggle {
+        transform-origin: right center !important;
+        margin: 0 0 0 -22px !important;
+    }
+    /* 학년 체크박스 그룹이 남는 폭을 다 차지하지 않도록 */
+    .matrix-filters .filter-section:first-child .checkbox-group {
+        flex: 0 1 auto !important;
+    }
+}
+
+/* =========================================================
+   v2.1 모바일: 레전드 1줄 / 통계카드 3열 / 분석표·교과목표 축소
+   ========================================================= */
+@media (max-width: 768px) {
+    /* 이수모형·공통가치 색상 레전드: 항목 축소로 1줄 유지 */
+    .color-mode-switch .color-legend {
+        flex-wrap: nowrap !important;
+        gap: 2px 4px !important;
+        justify-content: space-between !important;
+        overflow: hidden !important;
+    }
+    .color-legend-item { gap: 2px !important; flex: 0 0 auto !important; }
+    .color-legend-box { width: 8px !important; height: 8px !important; }
+    .color-legend-label { font-size: 9px !important; letter-spacing: -0.3px !important; }
+
+    /* 분석·통계 카드: 3열(3x2) 배치 */
+    #analysis .stats {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 6px !important;
+    }
+    #analysis .stat-card { padding: 8px 4px !important; }
+    #analysis .stat-card > *:first-child { font-size: 18px !important; }
+    #analysis .stat-card > *:last-child { font-size: 9px !important; }
+
+    /* 분석·통계 표(학년별 교과목 분포): 다른 탭 수준으로 축소 */
+    #analysis table, #analysis th, #analysis td {
+        font-size: 11px !important;
+    }
+    #analysis th, #analysis td { padding: 3px 4px !important; }
+    #analysis h3 { font-size: 12px !important; padding: 8px 10px !important; }
+
+    /* 교과목 관리 표: 셀 여백·폰트 축소, 정렬 화살표 아주 작게 */
+    #courses table, #courses th, #courses td { font-size: 10px !important; }
+    #courses th, #courses td { padding: 2px 4px !important; }
+    #courses .sort-icon { font-size: 7px !important; margin-left: 1px !important; }
+    #courses th { line-height: 1.25 !important; }
+}
+
+/* 교과목 표: 디자인설정의 고정 행높이(--row-height:50px)를 모바일에선 해제 */
+@media (max-width: 768px) {
+    #courses table th,
+    #courses table td {
+        height: auto !important;
+        min-height: 0 !important;
+    }
+}
+
+/* =========================================================
+   v2.1 모바일: 헤더 미세조정 (제목↑ / 버전명↓ / 화살표↓ / 저장 숨김)
+   ========================================================= */
+@media (max-width: 768px) {
+    /* 제목·로고 조금 더 크게 */
+    .main-header-content h1 { font-size: 16px !important; }
+    .main-header-content img { height: 19px !important; }
+
+    /* 버전 이름 더 작게 */
+    .version-info-line { font-size: 8px !important; }
+    .current-version-display { font-size: 8px !important; }
+
+    /* ◀▶ 화살표 더 작게 */
+    .version-nav-btn-small {
+        font-size: 6px !important;
+        min-width: 12px !important;
+        height: 11px !important;
+        padding: 0 2px !important;
+    }
+
+    /* '버전 저장' 버튼 숨김 */
+    .version-buttons-line .btn-sm[onclick*="saveVersion"] { display: none !important; }
+}
+
+/* 분석·통계 학년별 분포표: 고정 행높이 해제 + 폰트 축소 */
+@media (max-width: 768px) {
+    /* 교과목 관리 표와 동일 규격(10px, 2px 4px) */
+    #analysis table th,
+    #analysis table td {
+        height: auto !important;
+        min-height: 0 !important;
+        font-size: 10px !important;
+        padding: 2px 4px !important;
+        line-height: 1.35 !important;
+    }
+}
+
+/* 분석·통계 분포표 카드: 표 높이에 맞게 (고정 min-height/하단 패딩 해제) */
+@media (max-width: 768px) {
+    #analysis .table-container {
+        min-height: 0 !important;
+        padding-bottom: 6px !important;
+        margin-bottom: 12px !important;
+        height: auto !important;
+    }
+}
+
+/* 분석 분포표: 열 강제폭 해제(화면에 맞춤) + 폰트 확대 */
+@media (max-width: 768px) {
+    #analysis .table-container table {
+        min-width: 0 !important;
+        width: 100% !important;
+    }
+    #analysis table th,
+    #analysis table td {
+        font-size: 11.5px !important;
+        padding: 3px 2px !important;
+        white-space: normal !important;
+    }
+}
+
+/* =========================================================
+   PDF 내보내기(인쇄): 대상 표만 A3 가로로 인쇄
+   ========================================================= */
+@media print {
+    @page { size: A3 landscape; margin: 10mm; }
+    body.print-capture * { visibility: hidden !important; }
+    body.print-capture .print-target,
+    body.print-capture .print-target * { visibility: visible !important; }
+    body.print-capture .print-target {
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: max-content !important;
+        max-height: none !important;
+        overflow: visible !important;
+        box-shadow: none !important;
+    }
+    body.print-capture .print-target .map-ctrls { display: none !important; }
+}
+
+/* =========================================================
+   v2.1 모바일 지도뷰: stage 안 중첩 .table-container 정리
+   (기본 스타일의 padding-bottom:150px·min-height·라운드·그림자가
+    보조표 주변 빈 공간과 모서리 어긋남을 만들던 문제)
+   ========================================================= */
+@media (max-width: 768px) {
+    [data-map-on] .map-stage .table-container {
+        min-height: 0 !important;
+        padding: 0 !important;
+        margin: 12px 0 0 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        background: transparent !important;
+    }
+}
