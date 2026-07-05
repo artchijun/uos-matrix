@@ -1187,7 +1187,7 @@ th.resizable:hover .column-resizer {
 
 /* 반응형 디자인 */
 /* 모바일 반응형 스타일 */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     .container {
         padding: 10px;
         overflow-x: hidden;
@@ -2646,7 +2646,7 @@ th, td, .matrix-table th, .matrix-table td {
 }
 
 /* 반응형 디자인 - 모바일 최적화 */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     .vis-tooltip {
         font-size: 12px !important;
         padding: 6px 10px !important;
@@ -3203,7 +3203,7 @@ th, td, .matrix-table th, .matrix-table td {
 }
 
 /* 모바일에서 색상 범례 반응형 */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     .color-legend {
         gap: 10px;
         margin-right: 18px;
@@ -4052,7 +4052,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
 }
 
 /* 추가 모바일 최적화 스타일 */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     /* 터치 스크롤 최적화 */
     .table-container {
         -webkit-overflow-scrolling: touch;
@@ -4726,7 +4726,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
    - PC(>768px) 레이아웃은 변경 없음. 아래 규칙은 모두 ≤768px에만 적용.
    - 인라인 style 로 지정된 요소가 있어 필요한 곳에만 !important 사용.
    ========================================================= */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     /* 컨트롤 바: 보기모드/색상기준 스위치를 라벨(위)+컨트롤(아래)로 스택 */
     .view-mode-switch,
     .color-mode-switch {
@@ -4818,7 +4818,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
    - 실제 sticky 지정 클래스(sticky-col/head/corner)는 JS가
      rowspan/colspan을 계산해 올바른 셀에만 부여한다.
    ========================================================= */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     /* 실제 스크롤 박스(표의 직접 부모)는 JS가 높이 제한/overflow를 설정한다.
        여기서는 부드러운 스크롤과 스크롤바만 지정 */
     #matrix .table-container,
@@ -4866,7 +4866,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
    - 표 본문/블록 글씨를 UI(약 14px)와 일관된 크기로 통일한다.
    - 이 블록이 앞선 ≤768/≤480 규칙보다 뒤에 있어 우선 적용된다.
    ========================================================= */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     /* 모든 표 본문 글씨 통일 */
     table,
     .matrix-table,
@@ -4912,7 +4912,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
    - 모바일 전용(≤768px). PC 레이아웃은 변경하지 않는다.
    - 이 블록이 가장 뒤에 있어 앞선 모바일 규칙보다 우선 적용된다.
    ========================================================= */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     .container { padding: 12px 12px 28px; }
 
     /* ---- 헤더: 컴팩트 + 위계 ---- */
@@ -5032,7 +5032,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
    - 표 글씨는 조망용으로 작게(핀치줌으로 확대해 읽음).
    - 표 스크롤 박스 높이는 JS가 창 높이에 맞춰 지정한다.
    ========================================================= */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     /* 가로 넘침은 clip으로 잘라 페이지 폭을 화면에 고정하고(버튼·필터가 폭을 넘지 않게),
        세로는 visible로 두어 상단 sticky 탭바가 정상 동작하게 한다.
        (clip은 hidden과 달리 스크롤 컨테이너를 만들지 않아 sticky를 깨지 않음) */
@@ -5105,7 +5105,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
 /* =========================================================
    v2.1 모바일: 표 위 제목·설명·버튼 축소 (공간 절약)
    ========================================================= */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     /* 표 제목줄: 제목 + 긴 설명을 세로로 쌓고 작게 */
     .matrix-header-bar {
         flex-direction: column !important;
@@ -5152,7 +5152,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
    - 전체 화면: 지도 뷰어가 이미 화면을 채움
    - 이미지 내보내기 / 편집모드: 데스크톱에서 수행
    ========================================================= */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     .matrix-controls .font-size-controls,
     .matrix-controls > .btn-primary,
     .matrix-controls > .btn-secondary,
@@ -5167,7 +5167,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
    v2.1 모바일: 필터 영역이 화면 폭을 넘지 않게 (줄바꿈 정리)
    - 필터 라벨은 위, 체크박스는 아래 전체폭으로 줄바꿈.
    ========================================================= */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     .matrix-filters {
         width: 100% !important;
         box-sizing: border-box !important;
@@ -5212,7 +5212,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
    v2.1 모바일: 상단 영역(헤더·버전·탭)·필터·버튼 컴팩트화
    - 메뉴들이 세로 공간을 많이 차지해 전반적으로 밀도를 높인다.
    ========================================================= */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     /* --- 헤더/버전 --- */
     .container { padding-top: 8px !important; }
     .header-section { margin-bottom: 8px !important; }
@@ -5297,7 +5297,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
 /* =========================================================
    v2.1 모바일: 헤더 한 줄 정리 + 교과목 버튼을 필터 카드로 통합
    ========================================================= */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     /* body 밖으로 삐져나가는 요소까지 루트에서 가로 클립 */
     html, body { overflow-x: clip !important; }
     /* 호버 툴팁은 모바일(터치)에서 불필요하고 페이지 폭을 넘겨 가로 스크롤을 유발하므로 숨김 */
@@ -5357,7 +5357,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
 /* =========================================================
    v2.1 모바일: 버전/필터/체크박스/드롭다운 추가 정리 (사용자 피드백)
    ========================================================= */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     /* [버전] '버전 :' 라벨 제거 → 날짜 + 버튼만 한 줄에 여유 있게 */
     .version-info { display: none !important; }
     .version-info-line { padding: 2px 5px !important; }
@@ -5398,7 +5398,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
 }
 
 /* v2.1 모바일: 필터 초기화 + 변경사항 표시 한 줄 배치 */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     .reset-vm-row {
         display: flex !important;
         gap: 8px !important;
@@ -5424,7 +5424,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
    v2.1 모바일: 교과목 필터 3열 배치
    행1) 학년·학기·과목분류  행2) 구분·일반모드·검색  행3) 변경상태(전체폭)
    ========================================================= */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     #courses .filters {
         grid-template-columns: repeat(3, 1fr) !important;
         padding: 12px !important;
@@ -5455,7 +5455,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
 /* =========================================================
    v2.1 모바일: 탭 5개를 1줄로 (줄바꿈 대신 한 줄, 넘치면 가로 스크롤)
    ========================================================= */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     .tabs {
         flex-wrap: nowrap !important;
         overflow-x: auto !important;
@@ -5478,7 +5478,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
 /* =========================================================
    v2.1 모바일: 탭별 필터 영역 스타일을 '수행평가 매트릭스' 기준으로 통일
    ========================================================= */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     /* 교과목 필터 카드 → 매트릭스 카드와 동일 (회색 배경/8px radius/그림자/여백) */
     #courses .filters {
         background: #f8f9fa !important;
@@ -5508,7 +5508,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
    v2.1 모바일: 이수모형/공통가치 컨트롤도 매트릭스 필터 기준으로 통일
    (범례 라벨 10px, 색상박스 10px, '색상 기준:' 캡션 10px, 토글 축소)
    ========================================================= */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     /* 색상 범례: 라벨·박스 크기 통일 */
     .color-legend { gap: 4px 8px !important; }
     .color-legend-label {
@@ -5545,7 +5545,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
    v2.1 모바일: 범례 전체폭 + 색상기준 아랫줄 / 필터초기화 숨김 /
    변경사항 토글화 / 교과목 필터 축소
    ========================================================= */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     /* 색상 범례: 전체 폭 사용, '색상 기준:'+토글은 아랫줄 */
     .color-mode-switch { flex-wrap: wrap !important; row-gap: 6px !important; }
     .color-mode-switch .color-legend {
@@ -5607,7 +5607,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
    v2.1 모바일: 변경표시 토글 = 분야 토글과 동일 규격·같은 줄 /
    교과목 일반모드 숨김 / 교과목 필터 7pt(9px)
    ========================================================= */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     /* 변경표시 토글: 분야 토글(80x32, scale 0.72)과 동일 규격 */
     .vm-toggle {
         width: 80px !important;
@@ -5659,7 +5659,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
 }
 
 /* 변경 상태: 전체폭 (nth-child auto 규칙보다 특이도 높임) */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     #courses .filters .filter-group.change-status-filter {
         grid-column: 1 / -1 !important;
     }
@@ -5668,7 +5668,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
 /* =========================================================
    v2.1 모바일: 교과목 필터 최종 압축 (라벨을 왼쪽 인라인으로)
    ========================================================= */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     #courses .filters { padding: 5px 7px !important; gap: 3px 6px !important; }
     #courses .filters .filter-group {
         display: flex !important;
@@ -5695,7 +5695,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
 }
 
 /* 드롭다운 선택 텍스트가 길어도 한 줄 말줄임 */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     #courses .filter-dropdown-btn { overflow: hidden !important; }
     #courses .filter-dropdown-btn > span:first-child {
         white-space: nowrap !important;
@@ -5707,7 +5707,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
 }
 
 /* 선택기 내부 텍스트(span)까지 7pt로 — 별도 규칙(13px)이 이기고 있어 명시 */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     #courses .filter-dropdown-btn span,
     #courses .filter-dropdown-btn .dropdown-arrow {
         font-size: 9px !important;
@@ -5715,7 +5715,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
 }
 
 /* 선택지(드롭다운 목록) 내부 체크박스·항목 축소 */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     #courses .filter-checkbox-item input[type="checkbox"] {
         width: 12px !important;
         height: 12px !important;
@@ -5735,7 +5735,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
 /* =========================================================
    v2.1 모바일: 색상기준·변경표시 토글을 표 위(컨트롤 아래) 오른쪽 정렬
    ========================================================= */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     .toggles-row {
         display: flex !important;
         justify-content: flex-end !important;
@@ -5769,7 +5769,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
 /* =========================================================
    v2.1 모바일: 변경상태 한 줄 안전화 + 지도 뷰포트 내 제목줄
    ========================================================= */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     /* 변경상태 체크박스: 좁은 기기(360px)에서도 넘치지 않게 더 촘촘히,
        그래도 모자라면 줄바꿈(넘침 방지가 우선) */
     .matrix-filters .filter-section .checkbox-group,
@@ -5796,7 +5796,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
 }
 
 /* 매트릭스: 변경표시 토글을 학년 줄 오른쪽 끝에 붙임 */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     .matrix-filters .filter-section > .view-mode-switch {
         margin-left: auto !important;
         flex: 0 0 auto !important;
@@ -5817,7 +5817,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
 /* =========================================================
    v2.1 모바일: 레전드 1줄 / 통계카드 3열 / 분석표·교과목표 축소
    ========================================================= */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     /* 이수모형·공통가치 색상 레전드: 항목 축소로 1줄 유지 */
     .color-mode-switch .color-legend {
         flex-wrap: nowrap !important;
@@ -5853,7 +5853,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
 }
 
 /* 교과목 표: 디자인설정의 고정 행높이(--row-height:50px)를 모바일에선 해제 */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     #courses table th,
     #courses table td {
         height: auto !important;
@@ -5864,7 +5864,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
 /* =========================================================
    v2.1 모바일: 헤더 미세조정 (제목↑ / 버전명↓ / 화살표↓ / 저장 숨김)
    ========================================================= */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     /* 제목·로고 조금 더 크게 */
     .main-header-content h1 { font-size: 16px !important; }
     .main-header-content img { height: 19px !important; }
@@ -5886,7 +5886,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
 }
 
 /* 분석·통계 학년별 분포표: 고정 행높이 해제 + 폰트 축소 */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     /* 교과목 관리 표와 동일 규격(10px, 2px 4px) */
     #analysis table th,
     #analysis table td {
@@ -5899,7 +5899,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
 }
 
 /* 분석·통계 분포표 카드: 표 높이에 맞게 (고정 min-height/하단 패딩 해제) */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     #analysis .table-container {
         min-height: 0 !important;
         padding-bottom: 6px !important;
@@ -5909,7 +5909,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
 }
 
 /* 분석 분포표: 열 강제폭 해제(화면에 맞춤) + 폰트 확대 */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     #analysis .table-container table {
         min-width: 0 !important;
         width: 100% !important;
@@ -5947,7 +5947,7 @@ body.dragging-course .common-values-table td[id^="commonValues-cell-"] {
    (기본 스타일의 padding-bottom:150px·min-height·라운드·그림자가
     보조표 주변 빈 공간과 모서리 어긋남을 만들던 문제)
    ========================================================= */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
     [data-map-on] .map-stage .table-container {
         min-height: 0 !important;
         padding: 0 !important;

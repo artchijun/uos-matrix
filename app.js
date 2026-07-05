@@ -1309,7 +1309,7 @@ function restoreSelectedVersionData() {
 function showChangeHistoryModal() {
     // 모바일(≤768px)에서는 자동으로 열지 않는다. 좁은 화면을 덮어 방해가 되므로,
     // 사용자가 필요할 때 '변경 이력' 버튼으로 직접 열도록 한다. (데스크톱은 기존대로 자동 표시)
-    if (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) {
+    if (window.matchMedia && window.matchMedia('(max-width: 768px), (pointer: coarse)').matches) {
         return;
     }
     // 변경이력 패널을 보이게 함
@@ -20136,7 +20136,7 @@ window.init = init;
         { host: '#curriculum', getVp: function () { return vpOutsideStage(document.querySelector('#curriculum .curriculum-table')); } },
         { host: '#commonValues', getVp: function () { return vpOutsideStage(document.querySelector('#commonValues .common-values-table')); } }
     ];
-    var isMobile = function () { return window.matchMedia('(max-width: 768px)').matches; };
+    var isMobile = function () { return window.matchMedia('(max-width: 768px), (pointer: coarse)').matches; };
     var state = new WeakMap();
 
     function tabsH() { var t = document.querySelector('.tabs'); return t ? Math.round(t.getBoundingClientRect().height) : 56; }
@@ -20347,7 +20347,7 @@ window.init = init;
         return null;
     }
     function apply() {
-        var mobile = window.matchMedia('(max-width: 768px)').matches;
+        var mobile = window.matchMedia('(max-width: 768px), (pointer: coarse)').matches;
         var f = document.querySelector('#courses .filters'); if (!f) return;
         var cc = document.querySelector('.courses-controls');
         var addBtn = document.querySelector('.btn-add');
@@ -20401,7 +20401,7 @@ window.init = init;
    ========================================================= */
 (function integrateResetViewmode() {
     var TABS = ['#matrix', '#curriculum', '#commonValues'];
-    var isMobile = function () { return window.matchMedia('(max-width: 768px)').matches; };
+    var isMobile = function () { return window.matchMedia('(max-width: 768px), (pointer: coarse)').matches; };
     var orig = new WeakMap();
     function remember(el) { if (el && !orig.has(el)) orig.set(el, { parent: el.parentElement, next: el.nextSibling }); }
     function restore(el) {
@@ -20479,7 +20479,7 @@ window.init = init;
      클릭 시 원본 버튼을 프록시로 눌러 기존 로직을 그대로 사용한다.
    ========================================================= */
 (function viewmodeToggleUI() {
-    var isMobile = function () { return window.matchMedia('(max-width: 768px)').matches; };
+    var isMobile = function () { return window.matchMedia('(max-width: 768px), (pointer: coarse)').matches; };
     function stateOn(host) {
         // true = 변경사항 표시 모드
         try {
