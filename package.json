@@ -1,6 +1,6 @@
 {
   "name": "uos-matrix",
-  "version": "2.1.77",
+  "version": "2.1.78",
   "description": "UOSARCH 교과목 관리 시스템 - Architecture curriculum management system",
   "main": "app.js",
   "scripts": {
